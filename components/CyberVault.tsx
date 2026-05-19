@@ -6,7 +6,8 @@ interface AppNode {
   title: string;
   tagline: string;
   desc: string;
-  icon: string;
+  logoImage?: string;
+  features?: string[];
 }
 
 export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => {
@@ -101,15 +102,30 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="mb-8">
+                  {app.logoImage && (
+                    <div className="mb-8">
+                      <img src={app.logoImage} alt={app.title} className="h-12 md:h-16 w-auto object-contain" />
+                    </div>
+                  )}
+                  <div className={app.logoImage ? 'mb-6' : 'mb-8'}>
                     <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#ffffff]">
                       {app.title}
                     </h3>
                   </div>
 
-                  <p className="text-white/60 font-mono text-sm md:text-lg leading-relaxed max-w-xl mb-12">
+                  <p className="text-white/60 font-mono text-sm md:text-lg leading-relaxed max-w-xl mb-8">
                     {app.desc}
                   </p>
+
+                  {app.features && (
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {app.features.map((f: string, i: number) => (
+                        <span key={i} className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[8px] font-mono text-white/40 uppercase tracking-[0.15em]">
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  )}
 
                   <div className="mt-auto flex flex-wrap items-center gap-8">
                     <button className="px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
