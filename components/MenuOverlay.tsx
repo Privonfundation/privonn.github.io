@@ -46,48 +46,142 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
     { id: '/about', label: t.NAV.ABOUT, num: '06' },
   ];
 
-  return (
-    <div
-      ref={overlayRef}
-      className="fixed inset-0 z-[99999] flex flex-col items-center justify-center"
-      style={{ background: '#000' }}
-      onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
-    >
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-      </div>
-
-      <button
-        onClick={onClose}
-        className="absolute top-5 right-5 md:top-10 md:right-10 z-10 w-12 h-12 rounded-full border border-white/30 bg-black/60 flex items-center justify-center text-white hover:border-[#ffffff] hover:text-[#ffffff] transition-all"
-      >
-        <i className="fa-solid fa-xmark text-xl"></i>
-      </button>
-
-      <div className="relative z-20 flex flex-col items-stretch gap-2 w-full max-w-md px-6" onClick={(e) => e.stopPropagation()}>
-        {items.map((item, i) => (
-          <button
-            key={item.id}
-            type="button"
-            onClick={() => handleNav(item.id)}
-            className="group flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/[0.04] transition-all text-left border border-transparent hover:border-white/10"
-          >
-            <span className="text-sm font-mono text-white/30 w-8 text-right">{item.num}</span>
-            <div className="w-6 h-px bg-white/20 group-hover:w-10 group-hover:bg-[#ffffff] transition-all"></div>
-            <span className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white group-hover:text-[#ffffff] transition-all">
-              {item.label}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <div className="absolute bottom-8 flex flex-col items-center gap-3 z-20">
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#ffffff]/40 to-transparent"></div>
-        <div className="flex items-center gap-3">
-          <Logo className="w-5 h-5" glow={false} color="#ffffff" />
-          <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.4em]">Obscurity Security</span>
-        </div>
-      </div>
-    </div>
+  return React.createElement('div', {
+    ref: overlayRef,
+    onClick: (e: React.MouseEvent) => { if (e.target === overlayRef.current) onClose(); },
+    style: {
+      position: 'fixed',
+      top: 0, left: 0, right: 0, bottom: 0,
+      zIndex: 999999,
+      background: '#000',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }
+  },
+    React.createElement('div', {
+      style: {
+        position: 'absolute',
+        inset: 0,
+        pointerEvents: 'none',
+        overflow: 'hidden',
+        opacity: 0.12,
+        backgroundImage: 'radial-gradient(rgba(255,255,255,0.5) 1px, transparent 1px)',
+        backgroundSize: '40px 40px'
+      }
+    }),
+    React.createElement('button', {
+      onClick: onClose,
+      style: {
+        position: 'absolute',
+        top: '20px', right: '20px',
+        zIndex: 10,
+        width: '44px', height: '44px',
+        borderRadius: '50%',
+        border: '1px solid rgba(255,255,255,0.3)',
+        background: 'transparent',
+        color: '#fff',
+        fontSize: '22px',
+        cursor: 'pointer',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+      }
+    }, '✕'),
+    React.createElement('div', {
+      onClick: (e: React.MouseEvent) => e.stopPropagation(),
+      style: {
+        position: 'relative',
+        zIndex: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '12px',
+        width: '100%',
+        maxWidth: '420px',
+        padding: '0 24px'
+      }
+    }, ...items.map((item, i) =>
+      React.createElement('button', {
+        key: item.id,
+        type: 'button',
+        onClick: () => handleNav(item.id),
+        style: {
+          display: 'flex',
+          alignItems: 'center',
+          gap: '16px',
+          padding: '14px 20px',
+          borderRadius: '16px',
+          border: 'none',
+          background: 'transparent',
+          color: '#fff',
+          cursor: 'pointer',
+          textAlign: 'left',
+          fontSize: '28px',
+          fontWeight: 900,
+          textTransform: 'uppercase',
+          letterSpacing: '-0.02em',
+          transition: 'all 0.3s'
+        },
+        onMouseEnter: (e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+        },
+        onMouseLeave: (e: React.MouseEvent<HTMLButtonElement>) => {
+          e.currentTarget.style.background = 'transparent';
+        }
+      },
+        React.createElement('span', {
+          style: {
+            fontSize: '12px',
+            fontFamily: 'monospace',
+            color: 'rgba(255,255,255,0.3)',
+            minWidth: '30px',
+            textAlign: 'right'
+          }
+        }, item.num),
+        React.createElement('div', {
+          style: {
+            width: '24px',
+            height: '1px',
+            background: 'rgba(255,255,255,0.2)',
+            flexShrink: 0
+          }
+        }),
+        React.createElement('span', null, item.label)
+      )
+    )),
+    React.createElement('div', {
+      style: {
+        position: 'absolute',
+        bottom: '32px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '12px',
+        zIndex: 20
+      }
+    },
+      React.createElement('div', {
+        style: {
+          width: '60px',
+          height: '1px',
+          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)'
+        }
+      }),
+      React.createElement('div', {
+        style: { display: 'flex', alignItems: 'center', gap: '10px' }
+      },
+        React.createElement(Logo, { className: 'w-5 h-5', glow: false, color: '#fff' }),
+        React.createElement('span', {
+          style: {
+            fontSize: '10px',
+            fontFamily: 'monospace',
+            color: 'rgba(255,255,255,0.3)',
+            textTransform: 'uppercase',
+            letterSpacing: '0.4em'
+          }
+        }, 'Obscurity Security')
+      )
+    )
   );
 };
