@@ -227,6 +227,18 @@
         animation: nod-confirm 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
         transform-origin: bottom center;
       }
+
+      @keyframes scroll-ticker {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-scroll-ticker {
+        animation: scroll-ticker 40s linear infinite;
+        will-change: transform;
+      }
+      .animate-scroll-ticker-paused {
+        animation-play-state: paused;
+      }
     </style>
 <script type="importmap">
 {

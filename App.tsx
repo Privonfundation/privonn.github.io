@@ -20,42 +20,41 @@ const renderHighlighted = (text: string, className = '') => {
   );
 };
 
-const ArticleItemCompact = memo(({ art, isExpanded, onToggle }: { art: any, isExpanded: boolean, onToggle: () => void }) => (
-  <div className={`border-b border-white/5 last:border-0 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-[#39FF14]/[0.04]' : 'hover:bg-white/[0.02]'}`} onClick={onToggle}>
-    <div className="flex items-center gap-3 md:gap-5 px-4 md:px-8 py-3.5 md:py-5">
-      <div className={`w-2 h-2 rounded-full flex-shrink-0 transition-all duration-300 ${isExpanded ? 'bg-[#39FF14] shadow-[0_0_10px_#39FF14]' : 'bg-white/10'}`} />
-      <span className="text-[9px] md:text-[10px] font-mono text-white/25 w-14 md:w-16 flex-shrink-0">{art.id}</span>
-      <span className={`text-xs md:text-base font-bold flex-1 leading-tight transition-colors ${isExpanded ? 'text-[#39FF14]' : 'text-white/70'}`}>
-        {art.title}
-      </span>
-      <span className="hidden md:inline text-[8px] font-mono text-white/20 px-3 py-1 rounded-full bg-white/5 border border-white/5">{art.pilar}</span>
-      <span className={`text-[8px] font-mono uppercase tracking-[0.15em] px-2 py-1 rounded-full flex-shrink-0 ${isExpanded ? 'text-[#39FF14] bg-[#39FF14]/10' : 'text-white/20 bg-white/5'}`}>{art.status}</span>
-      <i className={`fa-solid fa-chevron-down text-[10px] text-white/20 transition-transform duration-300 flex-shrink-0 ${isExpanded ? 'rotate-180' : ''}`}></i>
+const ArticleCard = memo(({ art, isSelected, onClick }: { art: any, isSelected: boolean, onClick: () => void }) => (
+  <button
+    onClick={onClick}
+    className={`flex-shrink-0 flex flex-col items-start gap-1.5 px-4 md:px-6 py-3 md:py-4 rounded-xl border transition-all duration-300 text-left min-w-[170px] md:min-w-[230px] ${
+      isSelected
+        ? 'border-[#39FF14]/50 bg-[#39FF14]/[0.06] shadow-[0_0_20px_rgba(57,255,20,0.06)]'
+        : 'border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04]'
+    }`}
+  >
+    <div className="flex items-center gap-2">
+      <span className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+        isSelected ? 'bg-[#39FF14] shadow-[0_0_8px_#39FF14]' : 'bg-white/20'
+      }`} />
+      <span className="text-[7px] font-mono text-white/25 tracking-wider">{art.id}</span>
     </div>
-    <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}>
-      <p className="text-[11px] md:text-sm text-white/50 font-mono leading-relaxed px-4 md:px-8 pb-4 md:pb-6 border-l-2 border-[#39FF14]/30 ml-[3.25rem] md:ml-[4.5rem] pl-4">
-        {art.desc}
-      </p>
+    <span className="text-xs md:text-sm font-bold text-white/70 whitespace-nowrap leading-tight">{art.title}</span>
+    <div className="flex items-center gap-1.5">
+      <span className="text-[6px] md:text-[7px] font-mono text-white/20 uppercase tracking-[0.2em]">{art.pilar}</span>
+      <span className="text-[6px] text-white/10">·</span>
+      <span className="text-[6px] md:text-[7px] font-mono text-white/15">{art.status}</span>
     </div>
-  </div>
+  </button>
 ));
 
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
-  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<number | null>(null);
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
 
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
-
-  const toggleArticle = (index: number) => {
-    setExpandedIndex(expandedIndex === index ? null : index);
-  };
-
   const pillars = [...new Set(articles.map((a: any) => a.pilar))];
 
   useEffect(() => {
@@ -320,16 +319,36 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="rounded-xl border border-white/5 overflow-hidden bg-black/30">
-              {articles.map((art: any, index: number) => (
-                <ArticleItemCompact
-                  key={art.id}
-                  art={art}
-                  isExpanded={expandedIndex === index}
-                  onToggle={() => toggleArticle(index)}
-                />
-              ))}
+            <div className="group relative overflow-hidden rounded-xl border border-white/5 bg-black/40">
+              <div className="animate-scroll-ticker group-hover:[animation-play-state:paused] flex gap-3 md:gap-4 py-3 md:py-4 px-2">
+                {[...articles, ...articles].map((art: any, i: number) => {
+                  const realIndex = i >= articles.length ? i - articles.length : i;
+                  return (
+                    <ArticleCard
+                      key={`${art.id}-${i}`}
+                      art={art}
+                      isSelected={selectedArticle === realIndex}
+                      onClick={() => setSelectedArticle(selectedArticle === realIndex ? null : realIndex)}
+                    />
+                  );
+                })}
+              </div>
+              <div className="absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
+              <div className="absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-r from-transparent to-[#1a1a1e] pointer-events-none z-10"></div>
             </div>
+
+            {selectedArticle !== null && (
+              <div className="mt-4 p-4 md:p-6 rounded-xl border border-[#39FF14]/20 bg-[#39FF14]/[0.02] animate-fadeIn">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]"></span>
+                  <span className="text-[9px] font-mono text-[#39FF14] uppercase tracking-[0.3em] font-bold">{articles[selectedArticle].id}</span>
+                  <span className="text-[8px] font-mono text-white/20 tracking-[0.2em]">{articles[selectedArticle].pilar}</span>
+                </div>
+                <p className="text-xs md:text-sm font-mono text-white/60 leading-relaxed">
+                  {articles[selectedArticle].desc}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>
