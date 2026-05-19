@@ -392,25 +392,25 @@ const App: React.FC = () => {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
             <div>
-              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] text-gray-900 mb-8">
-                {lang === 'ro' ? 'Construit pe Adevăr' : lang === 'es' ? 'Construido sobre la Verdad' : 'Built on Truth'}
+              <h2 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] text-gray-900 mb-8">
+                {lang === 'ro' ? 'Suntem Oameni, Nu Utilizatori' : lang === 'es' ? 'Somos Personas, No Usuarios' : 'We Are People, Not Users'}
               </h2>
               <p className="text-base md:text-lg text-gray-500 font-mono leading-relaxed">
                 {lang === 'ro'
-                  ? 'Adevărata securitate digitală nu poate exista fără un fundament moral. Tehnologia fără etică devine un instrument de control.'
+                  ? 'Suntem oamenii din spatele ecranului, fiecare dintre noi — nu utilizatori. Pentru că utilizator înseamnă că suntem doar un produs, o bază de date într-un sistem. Dar noi suntem oameni. Avem drepturi. Avem nevoi. Avem emoții. Avem frici. Nu suntem doar niște date. Giganții tehnologici de obicei ne numesc utilizatori, dar aici la ObscuritySecurity venim să rupem acest termen. Pentru noi nu există utilizatori — există oameni. De aceea în fiecare documentație, cod, design, limbă, adresare — vă spunem oameni. Pentru că asta suntem. Făcut de oameni, pentru oameni.'
                   : lang === 'es'
-                  ? 'La verdadera seguridad digital no puede existir sin un fundamento moral. La tecnología sin ética se convierte en un instrumento de control.'
-                  : 'True digital security cannot exist without a moral foundation. Technology without ethics becomes a tool of control.'}
+                  ? 'Somos las personas detrás de la pantalla, cada uno de nosotros — no usuarios. Porque usuario significa que somos solo un producto, una base de datos en un sistema. Pero somos personas. Tenemos derechos. Tenemos necesidades. Tenemos emociones. Tenemos miedos. No somos solo datos. Los gigantes tecnológicos suelen llamarnos usuarios, pero aquí en ObscuritySecurity venimos a romper ese término. Para nosotros no existen usuarios — existen personas. Por eso en cada documentación, código, diseño, idioma, forma de dirigirnos — les decimos personas. Porque eso es lo que somos. Hecho por personas, para personas.'
+                  : 'We are the people behind the screen, every single one of us — not users. Because user means we are just a product, a database entry in a system. But we are people. We have rights. We have needs. We have emotions. We have fears. We are not just data. Tech giants usually call us users, but here at ObscuritySecurity we come to break that term. For us there are no users — there are people. That is why in every documentation, code, design, language, address — we call you people. Because that is what we are. Made by people, for people.'}
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               {[
-                { ro: 'Adevăr', en: 'Truth', es: 'Verdad' },
-                { ro: 'Libertate', en: 'Freedom', es: 'Libertad' },
                 { ro: 'Demnitate', en: 'Dignity', es: 'Dignidad' },
+                { ro: 'Libertate', en: 'Freedom', es: 'Libertad' },
+                { ro: 'Confidențialitate', en: 'Privacy', es: 'Privacidad' },
                 { ro: 'Transparență', en: 'Transparency', es: 'Transparencia' },
-                { ro: 'Responsabilitate', en: 'Responsibility', es: 'Responsabilidad' },
-                { ro: 'Credință', en: 'Faith', es: 'Fe' },
+                { ro: ' Respect', en: ' Respect', es: ' Respeto' },
+                { ro: 'Încredere', en: 'Trust', es: 'Confianza' },
               ].map((v) => (
                 <span key={v.en} className="px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 text-xs font-mono font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors">
                   {v[lang as 'ro' | 'en' | 'es']}
