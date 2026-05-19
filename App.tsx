@@ -292,7 +292,14 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="vision" className="py-32 md:py-64 bg-[#050505] relative overflow-hidden border-t border-white/5 section-content-visibility">
+      <section id="vision" className="py-32 md:py-64 relative overflow-hidden border-t border-white/5 section-content-visibility" style={{ background: '#1a1a1e' }}>
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
+          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
+          <div className="absolute top-20 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-6 relative">
           
           <div 
