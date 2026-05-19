@@ -330,7 +330,7 @@ const App: React.FC = () => {
                 {t.PACT_TITLE.split(':')[0]}<span className="text-[#39FF14]/30">:</span>
               </span>
               <br/>
-              <span className="text-white/10 block animate-nod">
+              <span className="text-white/10 block animate-nod mt-6 md:mt-10">
                 {t.PACT_TITLE.split(':')[1]}
               </span>
             </h2>
