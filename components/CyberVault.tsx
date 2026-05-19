@@ -93,9 +93,11 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
               {/* Card Container */}
               <div className="relative group bg-[#080808] border border-white/10 rounded-[2.5rem] p-8 md:p-16 overflow-hidden shadow-2xl">
                 
-                {/* Decorative Grid */}
-                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500">
-                   <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                {/* Decorative Grid with glow */}
+                <div className="absolute inset-0 opacity-[0.04] group-hover:opacity-[0.15] transition-opacity duration-700"
+                     style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px',
+                              filter: 'brightness(1)',
+                              animation: 'gridGlow 3.5s ease-in-out infinite' }}>
                 </div>
 
                 {/* Content */}
@@ -160,6 +162,12 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
           ))}
         </div>
       </div>
+      <style>{`
+        @keyframes gridGlow {
+          0%, 100% { filter: brightness(0.8); }
+          50% { filter: brightness(1.6); }
+        }
+      `}</style>
     </section>
   );
 };
