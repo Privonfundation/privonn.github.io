@@ -103,8 +103,11 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
                   {app.logoImage && (
-                    <div className="mb-8">
+                    <div className="flex justify-between items-start mb-8">
                       <img src={app.logoImage} alt={app.title} className="h-12 md:h-16 w-auto object-contain" />
+                      <span className="px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-[7px] font-mono text-white/25 uppercase tracking-[0.15em] whitespace-nowrap">
+                        AGPL-3.0
+                      </span>
                     </div>
                   )}
                   <div className={app.logoImage ? 'mb-6' : 'mb-8'}>
