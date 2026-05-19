@@ -2,6 +2,7 @@
 import React, { useEffect, useState, memo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
+import { Typewriter } from './components/Typewriter';
 import Silk from './components/Silk';
 import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
@@ -249,19 +250,26 @@ const App: React.FC = () => {
             <div className={`absolute inset-0 flex items-center justify-center transition-all duration-800 ease-in-out ${
               verseStage === 'third' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95 pointer-events-none'
             }`}>
-              <div className="w-full max-w-2xl mx-auto px-6">
+              <div className="w-full max-w-3xl mx-auto px-6">
                 <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15),0_0_30px_rgba(57,255,20,0.1),inset_0_0_40px_rgba(57,255,20,0.04)]">
-                  <blockquote className="text-center">
-                    <p className="text-2xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                      „{lang === 'ro' ? 'Mesajul tău aici' : lang === 'es' ? 'Tu mensaje aquí' : 'Your message here'}"
+                  <blockquote>
+                    <p className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-[1.3] text-white/90">
+                      <Typewriter
+                        text={t.FOUNDATION_MESSAGE}
+                        highlightWords={
+                          lang === 'ro'
+                            ? ['Iisus Hristos', 'libertate', 'mântuire', 'fundamentul', 'fără libertate']
+                            : lang === 'es'
+                            ? ['Jesucristo', 'libertad', 'salvación', 'fundamento', 'sin libertad']
+                            : ['Jesus Christ', 'freedom', 'salvation', 'foundation', 'without freedom']
+                        }
+                        speed={20}
+                      />
                     </p>
-                    <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                      — {lang === 'ro' ? 'Sursă' : lang === 'es' ? 'Fuente' : 'Source'}
-                    </cite>
                   </blockquote>
-                  <div className="mt-8 flex justify-center">
+                  <div className="mt-8 flex justify-center gap-4">
                     <button onClick={() => setVerseStage('verses')} className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white text-[10px] font-mono font-bold uppercase tracking-[0.3em] transition-all active:scale-95">
-                      ← {lang === 'ro' ? 'Înapoi' : lang === 'es' ? 'Volver' : 'Back'}
+                      ← {lang === 'ro' ? 'Înapoi la versete' : lang === 'es' ? 'Volver a versos' : 'Back to verses'}
                     </button>
                   </div>
                 </div>
