@@ -195,7 +195,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
-            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-8">
+            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[12%]">
               <div className="animate-verse-float md:animate-verse-float">
                 <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15)] md:mr-[-20%]">
                   <blockquote>
@@ -210,7 +210,7 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-8">
+            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[12%]">
               <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
                 <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg md:ml-[-20%]">
                   <blockquote>
