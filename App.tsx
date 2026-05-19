@@ -300,7 +300,7 @@ const App: React.FC = () => {
             ))}
           </div>
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
-          <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #fff, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
@@ -376,6 +376,46 @@ const App: React.FC = () => {
               </div>
               <div className="absolute inset-y-0 left-0 w-24 md:w-36 bg-gradient-to-r from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
               <div className="absolute inset-y-0 right-0 w-24 md:w-36 bg-gradient-to-r from-transparent to-[#1a1a1e] pointer-events-none z-10"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative py-32 md:py-48 overflow-hidden bg-white">
+        <div className="absolute bottom-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
+        <div className="max-w-7xl mx-auto px-6 relative z-20">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="h-px w-16 bg-gray-300"></div>
+            <span className="text-gray-400 font-mono text-xs uppercase tracking-[0.6em] font-bold">
+              {lang === 'ro' ? 'Filozofia Noastră' : lang === 'es' ? 'Nuestra Filosofía' : 'Our Philosophy'}
+            </span>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+            <div>
+              <h2 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-[0.85] text-gray-900 mb-8">
+                {lang === 'ro' ? 'Construit pe Adevăr' : lang === 'es' ? 'Construido sobre la Verdad' : 'Built on Truth'}
+              </h2>
+              <p className="text-base md:text-lg text-gray-500 font-mono leading-relaxed">
+                {lang === 'ro'
+                  ? 'Adevărata securitate digitală nu poate exista fără un fundament moral. Tehnologia fără etică devine un instrument de control.'
+                  : lang === 'es'
+                  ? 'La verdadera seguridad digital no puede existir sin un fundamento moral. La tecnología sin ética se convierte en un instrumento de control.'
+                  : 'True digital security cannot exist without a moral foundation. Technology without ethics becomes a tool of control.'}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              {[
+                { ro: 'Adevăr', en: 'Truth', es: 'Verdad' },
+                { ro: 'Libertate', en: 'Freedom', es: 'Libertad' },
+                { ro: 'Demnitate', en: 'Dignity', es: 'Dignidad' },
+                { ro: 'Transparență', en: 'Transparency', es: 'Transparencia' },
+                { ro: 'Responsabilitate', en: 'Responsibility', es: 'Responsabilidad' },
+                { ro: 'Credință', en: 'Faith', es: 'Fe' },
+              ].map((v) => (
+                <span key={v.en} className="px-5 py-2.5 rounded-full bg-gray-100 text-gray-700 text-xs font-mono font-bold uppercase tracking-[0.2em] hover:bg-gray-200 transition-colors">
+                  {v[lang as 'ro' | 'en' | 'es']}
+                </span>
+              ))}
             </div>
           </div>
         </div>
