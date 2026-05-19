@@ -62,7 +62,7 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
               </h2>
               <div className="flex items-center gap-1 md:gap-1.5">
                 <span className="w-0.5 h-0.5 md:w-1 md:h-1 rounded-full bg-[#39FF14] shadow-[0_0_5px_#39FF14] animate-pulse"></span>
-                <span className="text-[6px] md:text-[8px] font-mono text-[#39FF14] font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase leading-none">
+                <span className="text-[6px] md:text-[8px] font-mono text-white font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase leading-none">
                   {lang === 'ro' ? 'Pentru Oameni' : lang === 'es' ? 'Para Personas' : 'For People'}
                 </span>
               </div>
@@ -73,11 +73,11 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
             <div ref={langRef} className="relative">
               <button 
                 onClick={() => setLangOpen(prev => !prev)}
-                className="flex items-center gap-1.5 md:gap-2 px-2 md:px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all"
+                className="flex items-center gap-1.5 md:gap-2 px-3 md:px-4 py-2 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/[0.18] transition-all active:scale-95"
               >
-                <i className="fa-solid fa-globe text-white/40 text-xs"></i>
-                <span className="text-[8px] md:text-[9px] font-mono font-bold text-white/40 tracking-wider">{currentLang.label.toUpperCase()}</span>
-                <i className={`fa-solid fa-chevron-down text-white/30 text-[6px] transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`}></i>
+                <i className="fa-solid fa-globe text-white/60 text-xs"></i>
+                <span className="text-[8px] md:text-[9px] font-mono font-bold text-white/70 tracking-wider">{currentLang.label.toUpperCase()}</span>
+                <i className={`fa-solid fa-chevron-down text-white/60 text-[6px] transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`}></i>
               </button>
 
               {langOpen && (

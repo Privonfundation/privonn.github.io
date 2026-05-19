@@ -46,7 +46,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
         top: 0,
         left: 0,
         width: '100vw',
-        height: '100vh',
+        height: '100dvh',
         background: 'linear-gradient(135deg, rgba(0,0,0,0.98) 0%, rgba(10,10,10,0.98) 100%)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
@@ -59,8 +59,17 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
         padding: 0
       }}
     >
+      <style>{`
+        @media (max-width: 767px) {
+          .menu-heading { font-size: 28px !important; }
+          .menu-item { padding: 12px 16px !important; gap: 14px !important; }
+          .menu-container { gap: 6px !important; }
+          .menu-close { top: 16px !important; right: 16px !important; width: 40px !important; height: 40px !important; font-size: 16px !important; }
+        }
+      `}</style>
       {/* Close button */}
       <button
+        className="menu-close"
         onClick={(e) => {
           e.stopPropagation();
           onClose();
@@ -99,6 +108,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
 
       {/* Menu content */}
       <div 
+        className="menu-container"
         onClick={(e) => e.stopPropagation()}
         style={{
           display: 'flex',
@@ -110,6 +120,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
       >
         {/* Home */}
         <div
+          className="menu-item"
           onClick={() => handleNavigation('/')}
           style={{
             cursor: 'pointer',
@@ -168,7 +179,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
               transition: 'all 0.4s ease'
             }}
           />
-          <h3 style={{
+          <h3 className="menu-heading" style={{
             fontSize: '48px',
             fontWeight: 900,
             textTransform: 'uppercase',
@@ -192,6 +203,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
 
         {/* About */}
         <div
+          className="menu-item"
           onClick={() => handleNavigation('/about')}
           style={{
             cursor: 'pointer',
@@ -250,7 +262,7 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
               transition: 'all 0.4s ease'
             }}
           />
-          <h3 style={{
+          <h3 className="menu-heading" style={{
             fontSize: '48px',
             fontWeight: 900,
             textTransform: 'uppercase',
