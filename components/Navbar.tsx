@@ -94,28 +94,34 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
               </button>
 
               {langOpen && (
-                <div className="absolute right-0 top-full mt-2 w-44 bg-black/95 backdrop-blur-xl border border-white/10 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-[120]">
-                  <div className="p-1.5">
-                    {LANG_OPTIONS.map((option) => (
-                      <button
-                        key={option.code}
-                        onClick={() => {
-                          setLang(option.code);
-                          setLangOpen(false);
-                        }}
-                        className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-all ${
-                          lang === option.code
-                            ? 'bg-[#39FF14]/10 text-[#39FF14]'
-                            : 'text-white/50 hover:bg-white/5 hover:text-white'
-                        }`}
-                      >
-                        <span className="text-sm">{option.flag}</span>
-                        <span className="text-xs font-mono font-bold tracking-wide">{option.label}</span>
-                        {lang === option.code && (
-                          <i className="fa-solid fa-check text-[#39FF14] text-[10px] ml-auto"></i>
-                        )}
-                      </button>
-                    ))}
+                <div className="absolute right-0 top-full mt-3 w-48 z-[120]">
+                  <div className="relative bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.9),0_0_40px_rgba(57,255,20,0.05)] overflow-hidden">
+                    <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#39FF14]/60 to-transparent"></div>
+                    <div className="absolute -top-[5px] right-6 w-2.5 h-2.5 bg-black/80 border-t border-l border-white/10 rotate-45"></div>
+                    <div className="p-2">
+                      {LANG_OPTIONS.map((option) => (
+                        <button
+                          key={option.code}
+                          onClick={() => {
+                            setLang(option.code);
+                            setLangOpen(false);
+                          }}
+                          className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-left transition-all duration-300 ${
+                            lang === option.code
+                              ? 'bg-[#39FF14]/10 text-[#39FF14] shadow-[inset_0_0_20px_rgba(57,255,20,0.05)]'
+                              : 'text-white/50 hover:bg-white/[0.06] hover:text-white'
+                          }`}
+                        >
+                          <span className="text-base leading-none">{option.flag}</span>
+                          <span className="text-xs font-mono font-bold tracking-wide flex-1">{option.label}</span>
+                          {lang === option.code ? (
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]"></span>
+                          ) : (
+                            <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
                   </div>
                 </div>
               )}
