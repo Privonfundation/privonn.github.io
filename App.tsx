@@ -7,7 +7,6 @@ import Silk from './components/Silk';
 import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
-import { KeepAndroidOpen } from './components/KeepAndroidOpen';
 
 const renderHighlighted = (text: string, className = '') => {
   const parts = text.split('|');
@@ -381,8 +380,6 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
-
-      <KeepAndroidOpen lang={lang} />
 
       <CyberVault lang={lang} />
 
