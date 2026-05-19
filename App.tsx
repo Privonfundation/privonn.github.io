@@ -208,10 +208,10 @@ const App: React.FC = () => {
           </div>
 
           <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
-            <div className={`flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0 w-full transition-all duration-800 ease-in-out ${
+            <div className={`group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0 w-full transition-all duration-800 ease-in-out ${
               verseStage === 'third' ? 'opacity-0 md:translate-x-[-120%] md:translate-y-0 scale-95 pointer-events-none' : 'opacity-100 translate-x-0 scale-100'
             }`}>
-              <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out group-hover/verses:md:-translate-x-[18%]">
+              <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[18%]">
                 <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:-translate-x-[200%] opacity-0' : ''}`}>
                   <div className="animate-verse-float md:animate-verse-float">
                      <div className="bg-black/40 backdrop-blur-lg border border-white/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.06),inset_0_0_40px_rgba(255,255,255,0.03)] md:mr-[-20%]">
@@ -228,7 +228,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out group-hover/verses:md:translate-x-[18%]">
+              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%]">
                 <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:translate-x-[200%] opacity-0' : ''}`}>
                   <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
                      <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
