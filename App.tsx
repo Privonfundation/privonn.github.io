@@ -268,7 +268,7 @@ const App: React.FC = () => {
 
       <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] md:w-[800px] opacity-[0.08] blur-[3px] pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] opacity-[0.08] blur-[3px] pointer-events-none">
             <Logo className="w-full h-full" glow={false} color="#39FF14" />
           </div>
           <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
