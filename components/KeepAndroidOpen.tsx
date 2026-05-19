@@ -90,7 +90,7 @@ export const KeepAndroidOpen: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }
   }, [lang, androidArticles.length]);
 
   return (
-    <section ref={sectionRef} id="keep-android-open" className="relative bg-black overflow-hidden border-t border-white/5 section-content-visibility">
+    <section ref={sectionRef} id="keep-android-open" className="relative bg-black overflow-hidden section-content-visibility">
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#ff3333]/[0.03] rounded-full blur-[150px]"></div>

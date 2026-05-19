@@ -295,6 +295,7 @@ const App: React.FC = () => {
       <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
+          <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #000, transparent)' }}></div>
           <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
           <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>

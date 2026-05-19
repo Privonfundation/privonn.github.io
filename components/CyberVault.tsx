@@ -49,7 +49,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
   return (
     <section 
       id="the_vault" 
-      className="relative min-h-screen bg-black overflow-hidden flex flex-col justify-center border-t border-white/5"
+      className="relative min-h-screen bg-black overflow-hidden flex flex-col justify-center"
       onMouseMove={handleMouseMove}
     >
       {/* Background Ambience */}
