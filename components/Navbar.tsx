@@ -95,9 +95,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang }) => {
 
               {langOpen && (
                 <div className="absolute right-0 top-full mt-3 w-48 z-[120]">
-                  <div className="relative bg-black/80 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_30px_80px_rgba(0,0,0,0.9),0_0_40px_rgba(57,255,20,0.05)] overflow-hidden">
-                    <div className="absolute top-0 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#39FF14]/60 to-transparent"></div>
-                    <div className="absolute -top-[5px] right-6 w-2.5 h-2.5 bg-black/80 border-t border-l border-white/10 rotate-45"></div>
+                  <div className="relative bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-xl shadow-[0_0_60px_rgba(57,255,20,0.1)] overflow-hidden">
+                    <div className="absolute -top-[5px] right-6 w-2.5 h-2.5 bg-black/40 border-t border-l border-[#39FF14]/30 rotate-45"></div>
                     <div className="p-2">
                       {LANG_OPTIONS.map((option) => (
                         <button
