@@ -54,6 +54,7 @@ const App: React.FC = () => {
   const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
   const [activeArticles, setActiveArticles] = useState<Set<number>>(new Set());
   const [progressHeight, setProgressHeight] = useState(0);
+  const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
 
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
@@ -196,7 +197,7 @@ const App: React.FC = () => {
           <div className="absolute inset-0 bg-blueprint opacity-5"></div>
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
           <div className="absolute bottom-0 left-0 w-full h-24 bg-gradient-to-t from-black to-transparent z-10"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-white/10 blur-[120px] opacity-30"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#39FF14] blur-[120px] opacity-20"></div>
         </div>
 
         <div className="relative z-20 max-w-6xl mx-auto px-6">
@@ -206,36 +207,79 @@ const App: React.FC = () => {
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
           </div>
 
-          <div className="group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
-            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[18%]">
-              <div className="animate-verse-float md:animate-verse-float">
-                 <div className="bg-black/40 backdrop-blur-lg border border-white/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.06),inset_0_0_40px_rgba(255,255,255,0.03)] md:mr-[-20%]">
-                <blockquote>
-                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                    „{renderHighlighted(t.VERSE_1)}"
-                  </p>
-                  <cite className="block mt-8 text-white/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                    — {renderHighlighted(t.VERSE_1_REF)}
-                  </cite>
-                </blockquote>
+          <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
+            <div className={`flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0 w-full transition-all duration-800 ease-in-out ${
+              verseStage === 'third' ? 'opacity-0 md:translate-x-[-120%] md:translate-y-0 scale-95 pointer-events-none' : 'opacity-100 translate-x-0 scale-100'
+            }`}>
+              <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out group-hover/verses:md:-translate-x-[18%]">
+                <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:-translate-x-[200%] opacity-0' : ''}`}>
+                  <div className="animate-verse-float md:animate-verse-float">
+                     <div className="bg-black/40 backdrop-blur-lg border border-white/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.06),inset_0_0_40px_rgba(255,255,255,0.03)] md:mr-[-20%]">
+                  <blockquote>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
+                      „{renderHighlighted(t.VERSE_1)}"
+                    </p>
+                    <cite className="block mt-8 text-white/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                      — {renderHighlighted(t.VERSE_1_REF)}
+                    </cite>
+                  </blockquote>
+                  </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out group-hover/verses:md:translate-x-[18%]">
+                <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:translate-x-[200%] opacity-0' : ''}`}>
+                  <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
+                     <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
+                  <blockquote>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
+                      „{renderHighlighted(t.VERSE_2)}"
+                    </p>
+                    <cite className="block mt-8 text-white/50 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                      — {renderHighlighted(t.VERSE_2_REF)}
+                    </cite>
+                  </blockquote>
+                  </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%]">
-              <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
-                 <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
-                <blockquote>
-                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
-                    „{renderHighlighted(t.VERSE_2)}"
-                  </p>
-                  <cite className="block mt-8 text-white/50 font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                    — {renderHighlighted(t.VERSE_2_REF)}
-                  </cite>
-                </blockquote>
+            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-800 ease-in-out ${
+              verseStage === 'third' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95 pointer-events-none'
+            }`}>
+              <div className="w-full max-w-2xl mx-auto px-6">
+                <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15),0_0_30px_rgba(57,255,20,0.1),inset_0_0_40px_rgba(57,255,20,0.04)]">
+                  <blockquote className="text-center">
+                    <p className="text-2xl md:text-4xl lg:text-5xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
+                      „{lang === 'ro' ? 'Mesajul tău aici' : lang === 'es' ? 'Tu mensaje aquí' : 'Your message here'}"
+                    </p>
+                    <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                      — {lang === 'ro' ? 'Sursă' : lang === 'es' ? 'Fuente' : 'Source'}
+                    </cite>
+                  </blockquote>
+                  <div className="mt-8 flex justify-center">
+                    <button onClick={() => setVerseStage('verses')} className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white text-[10px] font-mono font-bold uppercase tracking-[0.3em] transition-all active:scale-95">
+                      ← {lang === 'ro' ? 'Înapoi' : lang === 'es' ? 'Volver' : 'Back'}
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="flex justify-center mt-10">
+            <button 
+              onClick={() => setVerseStage(verseStage === 'verses' ? 'third' : 'verses')}
+              className="group flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white/50 hover:text-white text-[9px] font-mono font-bold uppercase tracking-[0.4em] transition-all active:scale-95"
+            >
+              <span>{verseStage === 'verses' ? '→' : '←'}</span>
+              <span>{verseStage === 'verses'
+                ? (lang === 'ro' ? 'Continuă' : lang === 'es' ? 'Continuar' : 'Continue')
+                : (lang === 'ro' ? 'Înapoi la versete' : lang === 'es' ? 'Volver a versos' : 'Back to verses')
+              }</span>
+            </button>
           </div>
         </div>
       </section>
