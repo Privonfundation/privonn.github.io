@@ -20,40 +20,27 @@ const renderHighlighted = (text: string, className = '') => {
 };
 
 const ArticleCard = memo(({ art }: { art: any }) => (
-  <div className="flex-shrink-0 relative group bg-[#080808]/70 border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 overflow-hidden min-w-[210px] md:min-w-[290px] max-w-[210px] md:max-w-[290px] hover:border-[#ffffff]/30 transition-all duration-500">
-    <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none">
-      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }}></div>
-    </div>
-    <div className="relative z-10 flex flex-col gap-2">
+  <div className="flex-shrink-0 relative bg-[#080808] border border-white/8 rounded-2xl p-5 md:p-6 overflow-hidden min-w-[240px] md:min-w-[300px] max-w-[240px] md:max-w-[300px] transition-all duration-500">
+    <div className="absolute inset-0 opacity-[0.04]"
+         style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+    <div className="relative z-10 flex flex-col gap-2.5">
       <div className="flex items-center justify-between">
-        <span className="text-[8px] font-mono text-[#ffffff]/50 tracking-wider">{art.id}</span>
-        <span className="text-[7px] font-mono text-white/20 uppercase tracking-[0.2em] bg-white/5 px-2 py-0.5 rounded-full">{art.pilar}</span>
+        <span className="text-[9px] font-mono text-white/40 tracking-wider">{art.id}</span>
+        <span className="text-[7px] font-mono text-white/25 uppercase tracking-[0.2em] bg-white/5 px-2.5 py-0.5 rounded-full border border-white/5">{art.pilar}</span>
       </div>
-      <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-white/80 group-hover:text-[#ffffff] transition-colors duration-300 leading-tight">
-        {art.title}
-      </h4>
-      <p className="text-[9px] md:text-[10px] font-mono text-white/40 leading-relaxed line-clamp-2 group-hover:text-white/60 transition-colors duration-300">
-        {art.desc}
-      </p>
-      <div className="flex items-center gap-2 mt-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff]/60 shadow-[0_0_6px_rgba(255,255,255,0.3)]"></span>
+      <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-white/90 leading-tight">{art.title}</h4>
+      <p className="text-[10px] font-mono text-white/40 leading-relaxed line-clamp-2">{art.desc}</p>
+      <div className="flex items-center gap-2 mt-0.5">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff]/50 shadow-[0_0_6px_rgba(255,255,255,0.2)]" />
         <span className="text-[7px] font-mono text-white/15">{art.status}</span>
       </div>
     </div>
-    <div className="absolute top-3 right-3 flex flex-col gap-0.5 opacity-20 group-hover:opacity-40 transition-opacity pointer-events-none">
-      <div className="w-5 h-[1px] bg-white"></div>
-      <div className="w-2.5 h-[1px] bg-white self-end"></div>
+    <div className="absolute top-3 right-3 flex flex-col gap-0.5 opacity-15">
+      <div className="w-4 h-[1px] bg-white" />
+      <div className="w-2 h-[1px] bg-white self-end" />
     </div>
   </div>
 ));
-
-const Connector = () => (
-  <div className="flex items-center flex-shrink-0 mx-1 md:mx-2">
-    <div className="w-3 md:w-4 h-px bg-gradient-to-r from-transparent via-[#ffffff]/15 to-transparent"></div>
-    <div className="w-1 h-1 rounded-full bg-[#ffffff]/20"></div>
-    <div className="w-3 md:w-4 h-px bg-gradient-to-l from-transparent via-[#ffffff]/15 to-transparent"></div>
-  </div>
-);
 
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
@@ -66,7 +53,6 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang];
   const articles = PROTOCOL_ARTICLES[lang];
   const pillars = [...new Set(articles.map((a: any) => a.pilar))];
-  const mid = Math.ceil(articles.length / 2);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setActive(true));
@@ -266,117 +252,92 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
+      <section id="vision" className="py-32 md:py-64 relative overflow-hidden" style={{ background: '#0a0a0a' }}>
+        {/* Background layers */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] opacity-[0.08] blur-[3px] pointer-events-none">
-            <Logo className="w-full h-full" glow={false} color="#ffffff" />
-          </div>
-          <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-            {[
-              { name: 'Google', x: '5%', y: '8%', r: -12, s: 1 },
-              { name: 'Microsoft', x: '72%', y: '5%', r: 8, s: 0.9 },
-              { name: 'Apple', x: '15%', y: '35%', r: 5, s: 0.7 },
-              { name: 'Meta', x: '78%', y: '40%', r: -10, s: 0.8 },
-              { name: 'Amazon', x: '8%', y: '65%', r: 15, s: 0.6 },
-              { name: 'OpenAI', x: '65%', y: '72%', r: -7, s: 0.7 },
-              { name: 'TikTok', x: '50%', y: '10%', r: -20, s: 0.85 },
-              { name: 'X Corp', x: '85%', y: '20%', r: 25, s: 0.65 },
-              { name: 'Netflix', x: '20%', y: '80%', r: -5, s: 0.55 },
-              { name: 'Oracle', x: '70%', y: '88%', r: 12, s: 0.5 },
-            ].map((c, i) => (
-              <div
-                key={c.name}
-                className="absolute font-black uppercase tracking-tighter whitespace-nowrap text-white/20"
-                style={{
-                  left: c.x, top: c.y,
-                  transform: `rotate(${c.r}deg) scale(${c.s})`,
-                  fontSize: `clamp(${1.2 + i * 0.2}rem, ${3 + i * 0.5}vw, ${2.5 + i * 0.3}rem)`,
-                  opacity: 0.2 + (i % 3) * 0.1,
-                  textShadow: '0 0 30px rgba(255,255,255,0.08)',
-                }}
-              >
-                {lang === 'ro' ? 'NU VREM' : lang === 'es' ? 'NO QUEREMOS' : 'WE DON\'T WANT'} {c.name}
-              </div>
-            ))}
-          </div>
-          <div className="absolute top-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to bottom, transparent, #1a1a1e)' }}></div>
-          <div className="absolute bottom-0 left-0 w-full h-40 z-10" style={{ background: 'linear-gradient(to top, #fff, transparent)' }}></div>
-          <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)`, backgroundSize: '32px 32px' }}></div>
-          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-          <div className="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
-          <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent"></div>
-          <div className="absolute top-20 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+          <div className="absolute inset-0" style={{ backgroundImage: `radial-gradient(rgba(255,255,255,0.025) 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+          <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div className="absolute top-0 left-[15%] w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+          <div className="absolute top-0 right-[15%] w-px h-full bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-40" style={{ background: 'linear-gradient(to top, #fff, transparent)' }} />
+          <div className="absolute top-0 left-0 w-full h-40" style={{ background: 'linear-gradient(to bottom, #0a0a0a, transparent)' }} />
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative">
-          <div className="reveal-text">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-16 bg-[#ffffff]"></div>
-              <span className="text-[#ffffff] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
-            </div>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="flex items-center gap-4 mb-8">
+            <div className="h-px w-12 bg-white/40" />
+            <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
+          </div>
 
-            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 md:mb-12 leading-[0.85] relative">
-              <span className="animate-glitch-protocol">
-                Protocol 3305<span className="text-[#ffffff]/30">:</span>
-              </span>
-              <br/>
-              <span className="text-white/10 block animate-nod mt-6 md:mt-10">
+          <div className="max-w-4xl mb-16 md:mb-24">
+            <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-[0.85] mb-6">
+              <span className="text-white">Protocol 3305</span>
+              <br />
+              <span className="text-white/20 text-3xl md:text-5xl font-bold mt-4 block tracking-normal">
                 {t.PACT_TITLE.split(':')[1]}
               </span>
             </h2>
+          </div>
 
-            <div className="relative mb-10 md:mb-16 p-5 md:p-10 rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden group">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ffffff]/5 blur-[120px] rounded-full group-hover:bg-[#ffffff]/10 transition-all duration-700"></div>
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 blur-[80px] rounded-full"></div>
+          <div className="grid md:grid-cols-2 gap-8 mb-16 md:mb-24">
+            <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 blur-[100px] rounded-full" />
               <div className="relative z-10">
-                <p className="text-sm md:text-base font-mono text-white/60 leading-relaxed mb-5">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                  <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em]">PREAMBLE</span>
+                </div>
+                <p className="text-sm md:text-base font-mono text-white/50 leading-relaxed">
                   {t.PREAMBLE_TEXT}
                 </p>
-                <p className="text-sm md:text-base font-mono text-white/80 leading-relaxed border-l-2 border-[#ffffff]/40 pl-5">
+              </div>
+            </div>
+
+            <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-white/5 blur-[100px] rounded-full" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                  <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em]">FOUNDATION</span>
+                </div>
+                <p className="text-sm md:text-base font-mono text-white/60 leading-relaxed border-l-2 border-white/30 pl-4">
                   {t.PROTOCOL_DESC}
                 </p>
-                <div className="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center gap-3">
-                  <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.15em]">
+                <div className="mt-5 pt-4 border-t border-white/5 flex flex-wrap items-center gap-3">
+                  <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.2em]">
                     {lang === 'ro' ? 'Aderență:' : lang === 'es' ? 'Adhesión:' : 'Adherence:'}
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-[#ffffff]/10 border border-[#ffffff]/30 text-[8px] font-mono text-[#ffffff] uppercase tracking-[0.3em]">Zero-Knowledge</span>
-                  <span className="px-3 py-1 rounded-full bg-[#ffffff]/10 border border-[#ffffff]/30 text-[8px] font-mono text-[#ffffff] uppercase tracking-[0.3em]">Zero-Trust</span>
+                  <span className="px-3 py-1 rounded-full bg-white/8 border border-white/20 text-[8px] font-mono text-white/60 uppercase tracking-[0.3em]">Zero-Knowledge</span>
+                  <span className="px-3 py-1 rounded-full bg-white/8 border border-white/20 text-[8px] font-mono text-white/60 uppercase tracking-[0.3em]">Zero-Trust</span>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6 px-1">
-              <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#ffffff] shadow-[0_0_10px_#ffffff] animate-pulse"></span>
-                <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.3em]">
-                  {articles.length}/{articles.length} {lang === 'ro' ? 'Articole Active' : lang === 'es' ? 'Artículos Activos' : 'Articles Enforced'}
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <div className="flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-white/40" />
+              <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.3em]">
+                {articles.length} {lang === 'ro' ? 'Articole' : lang === 'es' ? 'Artículos' : 'Articles'}
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {pillars.map((p: string) => (
+                <span key={p} className="text-[7px] font-mono text-white/20 uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-white/5 border border-white/5">
+                  {p}
                 </span>
-              </div>
-              <div className="flex flex-wrap gap-1.5">
-                {pillars.map((p: string) => (
-                  <span key={p} className="text-[7px] font-mono text-white/20 uppercase tracking-[0.2em] px-2.5 py-1 rounded-full bg-white/5 border border-white/5">
-                    {p}
-                  </span>
-                ))}
-              </div>
+              ))}
             </div>
+          </div>
 
-            <div className="group relative overflow-hidden pt-2 md:pt-3">
-              <div className="animate-scroll-ticker flex items-center pb-2 md:pb-3">
-                {[...articles.slice(0, mid), ...articles.slice(0, mid)].flatMap((art: any, i: number, arr: any[]) => [
-                  <ArticleCard key={`r1-${art.id}-${i}`} art={art} />,
-                  i < arr.length - 1 ? <Connector key={`r1-c-${i}`} /> : null
-                ])}
-              </div>
-              <div className="animate-scroll-ticker-reverse flex items-center pb-2 md:pb-3">
-                {[...articles.slice(mid), ...articles.slice(mid)].flatMap((art: any, i: number, arr: any[]) => [
-                  <ArticleCard key={`r2-${art.id}-${i}`} art={art} />,
-                  i < arr.length - 1 ? <Connector key={`r2-c-${i}`} /> : null
-                ])}
-              </div>
-              <div className="absolute inset-y-0 left-0 w-24 md:w-36 bg-gradient-to-r from-[#1a1a1e] to-transparent pointer-events-none z-10"></div>
-              <div className="absolute inset-y-0 right-0 w-24 md:w-36 bg-gradient-to-r from-transparent to-[#1a1a1e] pointer-events-none z-10"></div>
+          <div className="relative">
+            <div className="overflow-x-auto no-scrollbar flex gap-4 md:gap-5 pb-4">
+              {articles.map((art: any, i: number) => (
+                <ArticleCard key={art.id} art={art} />
+              ))}
             </div>
+            <div className="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-r from-transparent to-[#0a0a0a] pointer-events-none z-10" />
           </div>
         </div>
       </section>
