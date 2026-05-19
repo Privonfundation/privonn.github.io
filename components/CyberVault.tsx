@@ -101,21 +101,11 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-12">
-                    <div className="w-16 h-16 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center">
-                      <i className={`${app.icon} text-2xl text-white/60`}></i>
-                    </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className="text-[8px] font-mono text-white/30 uppercase tracking-widest">Signal_Strength</span>
-                      <div className="flex gap-0.5">
-                        {[1,2,3,4,5].map(i => <div key={i} className="w-3 h-1 bg-[#ffffff]/50" />)}
-                      </div>
-                    </div>
+                  <div className="mb-8">
+                    <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#ffffff]">
+                      {app.title}
+                    </h3>
                   </div>
-
-                  <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 text-[#ffffff]">
-                    {app.title}
-                  </h3>
 
                   <p className="text-white/60 font-mono text-sm md:text-lg leading-relaxed max-w-xl mb-12">
                     {app.desc}
