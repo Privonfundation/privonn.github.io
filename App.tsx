@@ -287,13 +287,13 @@ const App: React.FC = () => {
             ].map((c, i) => (
               <div
                 key={c.name}
-                className="absolute font-black uppercase tracking-tighter whitespace-nowrap text-white/10"
+                className="absolute font-black uppercase tracking-tighter whitespace-nowrap text-white/20"
                 style={{
                   left: c.x, top: c.y,
                   transform: `rotate(${c.r}deg) scale(${c.s})`,
                   fontSize: `clamp(${1.2 + i * 0.2}rem, ${3 + i * 0.5}vw, ${2.5 + i * 0.3}rem)`,
-                  opacity: 0.06 + (i % 3) * 0.03,
-                  textShadow: '0 0 30px rgba(57,255,20,0.05)',
+                  opacity: 0.2 + (i % 3) * 0.1,
+                  textShadow: '0 0 30px rgba(57,255,20,0.08)',
                 }}
               >
                 {lang === 'ro' ? 'NU VREM' : lang === 'es' ? 'NO QUEREMOS' : 'WE DON\'T WANT'} {c.name}
