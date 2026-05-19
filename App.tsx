@@ -194,30 +194,34 @@ const App: React.FC = () => {
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
           </div>
 
-          <div className="flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
-            <div className="relative z-20 md:w-1/2 md:flex-shrink-0">
-              <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15)] md:mr-[-20%]">
-                <blockquote>
-                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                    „{t.VERSE_1}"
-                  </p>
-                  <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                    — {t.VERSE_1_REF}
-                  </cite>
-                </blockquote>
+          <div className="group/verses flex flex-col md:flex-row md:items-start md:justify-center gap-8 md:gap-0">
+            <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-8">
+              <div className="animate-verse-float md:animate-verse-float">
+                <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15)] md:mr-[-20%]">
+                  <blockquote>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
+                      „{t.VERSE_1}"
+                    </p>
+                    <cite className="block mt-8 text-[#39FF14] font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                      — {t.VERSE_1_REF}
+                    </cite>
+                  </blockquote>
+                </div>
               </div>
             </div>
 
-            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16">
-              <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg md:ml-[-20%]">
-                <blockquote>
-                  <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
-                    „{t.VERSE_2}"
-                  </p>
-                  <cite className="block mt-8 text-[#39FF14]/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
-                    — {t.VERSE_2_REF}
-                  </cite>
-                </blockquote>
+            <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-8">
+              <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
+                <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-lg md:ml-[-20%]">
+                  <blockquote>
+                    <p className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
+                      „{t.VERSE_2}"
+                    </p>
+                    <cite className="block mt-8 text-[#39FF14]/70 font-mono text-sm tracking-[0.4em] uppercase not-italic">
+                      — {t.VERSE_2_REF}
+                    </cite>
+                  </blockquote>
+                </div>
               </div>
             </div>
           </div>

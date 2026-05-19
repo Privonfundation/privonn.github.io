@@ -184,6 +184,21 @@
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
       }
+
+      @keyframes verse-float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-8px); }
+      }
+      @keyframes verse-float-reverse {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(8px); }
+      }
+      .animate-verse-float {
+        animation: verse-float 5s ease-in-out infinite;
+      }
+      .animate-verse-float-reverse {
+        animation: verse-float-reverse 5s ease-in-out infinite;
+      }
     </style>
 <script type="importmap">
 {
