@@ -47,19 +47,19 @@ const AppNode: React.FC<AppNodeProps> = ({ app, index, total, onHover, activeId 
       >
         <sphereGeometry args={[0.4, 32, 32]} />
         <MeshDistortMaterial
-          color={isActive ? "#39FF14" : "#ffffff"}
+          color={isActive ? "#ffffff" : "#ffffff"}
           speed={isActive ? 4 : 1}
           distort={isActive ? 0.6 : 0.3}
           opacity={isActive ? 1 : 0.5}
           transparent
-          emissive={isActive ? "#39FF14" : "#000000"}
+          emissive={isActive ? "#ffffff" : "#000000"}
           emissiveIntensity={isActive ? 2 : 0}
         />
         
         <Text
           position={[0, 0.7, 0]}
           fontSize={0.2}
-          color={isActive ? "#39FF14" : "white"}
+          color={isActive ? "#ffffff" : "white"}
           fillOpacity={isActive ? 1 : 0.4}
         >
           {app.title.toUpperCase()}
@@ -69,7 +69,7 @@ const AppNode: React.FC<AppNodeProps> = ({ app, index, total, onHover, activeId 
       {!isActive && (
         <Line
           points={[[0, 0, 0], [Math.cos(angle) * radius, 0, Math.sin(angle) * radius]]}
-          color="#39FF14"
+          color="#ffffff"
           lineWidth={0.5}
           opacity={0.1}
           transparent
@@ -91,8 +91,8 @@ const Core = () => {
   return (
     <mesh ref={meshRef}>
       <octahedronGeometry args={[0.8, 0]} />
-      <meshBasicMaterial color="#39FF14" wireframe />
-      <pointLight intensity={2} color="#39FF14" />
+      <meshBasicMaterial color="#ffffff" wireframe />
+      <pointLight intensity={2} color="#ffffff" />
     </mesh>
   );
 };
@@ -125,7 +125,7 @@ const Scene = ({ lang, activeId, setActiveId }: { lang: 'ro' | 'en' | 'es', acti
               itemSize={3}
             />
           </bufferGeometry>
-          <pointsMaterial color="#39FF14" size={0.02} transparent opacity={0.2} />
+          <pointsMaterial color="#ffffff" size={0.02} transparent opacity={0.2} />
         </points>
       </mesh>
     </>
@@ -139,12 +139,12 @@ export const OrbitalSystem: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) 
 
   return (
     <section id="the_vault" className="relative h-screen bg-black overflow-hidden border-t border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(57,255,20,0.05)_0%,_transparent_70%)]"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(255,255,255,0.05)_0%,_transparent_70%)]"></div>
       
       <div className={`absolute inset-0 z-10 pointer-events-none transition-opacity duration-500 ${activeId ? 'opacity-100' : 'opacity-0'}`}>
         <div className="absolute top-1/2 left-12 -translate-y-1/2 max-w-sm">
-          <div className="border-l-2 border-[#39FF14] pl-6 py-4">
-            <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.5em] block mb-2">System_Output</span>
+          <div className="border-l-2 border-[#ffffff] pl-6 py-4">
+            <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] block mb-2">System_Output</span>
             <h3 className="text-5xl font-black uppercase tracking-tighter text-white mb-4">{activeApp?.title}</h3>
             <p className="text-white/60 font-mono text-sm leading-relaxed">{activeApp?.desc}</p>
           </div>
@@ -153,9 +153,9 @@ export const OrbitalSystem: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) 
         <div className="absolute top-1/2 right-12 -translate-y-1/2 text-right">
            <div className="flex flex-col items-end gap-2 mb-8">
              <span className="text-[10px] font-mono text-white/30 uppercase">Operational_Status</span>
-             <span className="text-[#39FF14] font-mono text-xs font-bold animate-pulse">ACTIVE_REPLICATION</span>
+             <span className="text-[#ffffff] font-mono text-xs font-bold animate-pulse">ACTIVE_REPLICATION</span>
            </div>
-           <button className="pointer-events-auto px-10 py-4 border border-[#39FF14] text-[#39FF14] font-black uppercase text-[10px] tracking-widest hover:bg-[#39FF14] hover:text-black transition-all">
+           <button className="pointer-events-auto px-10 py-4 border border-[#ffffff] text-[#ffffff] font-black uppercase text-[10px] tracking-widest hover:bg-[#ffffff] hover:text-black transition-all">
              Initialize_Module
            </button>
         </div>

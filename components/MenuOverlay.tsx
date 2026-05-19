@@ -54,12 +54,12 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
       onClick={(e) => { if (e.target === overlayRef.current) onClose(); }}
     >
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'radial-gradient(#39FF14 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+        <div className="absolute inset-0 opacity-[0.15]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
       </div>
 
       <button
         onClick={onClose}
-        className="absolute top-5 right-5 md:top-10 md:right-10 z-10 w-12 h-12 rounded-full border border-white/30 bg-black/60 flex items-center justify-center text-white hover:border-[#39FF14] hover:text-[#39FF14] transition-all"
+        className="absolute top-5 right-5 md:top-10 md:right-10 z-10 w-12 h-12 rounded-full border border-white/30 bg-black/60 flex items-center justify-center text-white hover:border-[#ffffff] hover:text-[#ffffff] transition-all"
       >
         <i className="fa-solid fa-xmark text-xl"></i>
       </button>
@@ -73,8 +73,8 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
             className="group flex items-center gap-4 px-6 py-4 rounded-2xl hover:bg-white/[0.04] transition-all text-left border border-transparent hover:border-white/10"
           >
             <span className="text-sm font-mono text-white/30 w-8 text-right">{item.num}</span>
-            <div className="w-6 h-px bg-white/20 group-hover:w-10 group-hover:bg-[#39FF14] transition-all"></div>
-            <span className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white group-hover:text-[#39FF14] transition-all">
+            <div className="w-6 h-px bg-white/20 group-hover:w-10 group-hover:bg-[#ffffff] transition-all"></div>
+            <span className="text-2xl md:text-4xl font-black uppercase tracking-tight text-white group-hover:text-[#ffffff] transition-all">
               {item.label}
             </span>
           </button>
@@ -82,9 +82,9 @@ export const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose, lang }) => {
       </div>
 
       <div className="absolute bottom-8 flex flex-col items-center gap-3 z-20">
-        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#39FF14]/40 to-transparent"></div>
+        <div className="w-16 h-px bg-gradient-to-r from-transparent via-[#ffffff]/40 to-transparent"></div>
         <div className="flex items-center gap-3">
-          <Logo className="w-5 h-5" glow={false} color="#39FF14" />
+          <Logo className="w-5 h-5" glow={false} color="#ffffff" />
           <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.4em]">Obscurity Security</span>
         </div>
       </div>

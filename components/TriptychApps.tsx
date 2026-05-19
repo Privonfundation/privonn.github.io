@@ -25,39 +25,39 @@ export const TriptychApps: React.FC<TriptychAppsProps> = ({ lang }) => {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
             className={`relative flex-1 flex flex-col justify-end transition-all duration-700 ease-[cubic-bezier(0.7,0,0.3,1)] overflow-hidden group border-b md:border-b-0 md:border-r border-white/5 last:border-0 h-[60vh] md:h-screen ${
-              isHovered ? 'md:flex-[2.5] bg-[#39FF14]/[0.02]' : isAnyHovered ? 'md:flex-[0.7] grayscale' : 'md:flex-1'
+              isHovered ? 'md:flex-[2.5] bg-[#ffffff]/[0.02]' : isAnyHovered ? 'md:flex-[0.7] grayscale' : 'md:flex-1'
             }`}
           >
             {/* Background Accent Gradient */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-[#39FF14]/10 via-transparent to-transparent transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
+            <div className={`absolute inset-0 bg-gradient-to-t from-[#ffffff]/10 via-transparent to-transparent transition-opacity duration-700 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
             
             {/* Scanline Effect on Hover */}
             <div className={`absolute inset-0 bg-scanline pointer-events-none opacity-20 transition-transform duration-[4000ms] linear infinite ${isHovered ? 'translate-y-full' : ''}`} 
-                 style={{ backgroundImage: 'linear-gradient(to bottom, transparent 50%, rgba(57, 255, 20, 0.1) 50%)', backgroundSize: '100% 4px' }}></div>
+                 style={{ backgroundImage: 'linear-gradient(to bottom, transparent 50%, rgba(255, 255, 255, 0.1) 50%)', backgroundSize: '100% 4px' }}></div>
 
             {/* Content Container */}
             <div className="relative z-10 p-8 md:p-16 h-full flex flex-col justify-end">
               
               {/* Vertical Index Number */}
               <div className="absolute top-12 left-8 md:left-12 flex flex-col items-center gap-4">
-                 <span className={`text-[12px] font-mono font-bold transition-colors duration-500 ${isHovered ? 'text-[#39FF14]' : 'text-white/20'}`}>
+                 <span className={`text-[12px] font-mono font-bold transition-colors duration-500 ${isHovered ? 'text-[#ffffff]' : 'text-white/20'}`}>
                    APP_{app.id}
                  </span>
-                 <div className={`w-[1px] h-12 transition-all duration-700 ${isHovered ? 'bg-[#39FF14] h-20' : 'bg-white/10'}`}></div>
+                 <div className={`w-[1px] h-12 transition-all duration-700 ${isHovered ? 'bg-[#ffffff] h-20' : 'bg-white/10'}`}></div>
               </div>
 
               {/* Central Icon - Appears and scales */}
               <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center transition-all duration-700 ${isHovered ? 'scale-110 opacity-20 blur-[2px]' : 'scale-100 opacity-5'}`}>
-                <i className={`${app.icon} text-[15rem] md:text-[25rem] text-[#39FF14]`}></i>
+                <i className={`${app.icon} text-[15rem] md:text-[25rem] text-[#ffffff]`}></i>
               </div>
 
               {/* Info Text */}
               <div className="flex flex-col gap-4 max-w-lg">
                 <div className="flex flex-col">
-                  <span className={`text-[10px] font-mono uppercase tracking-[0.5em] mb-2 transition-colors ${isHovered ? 'text-[#39FF14]' : 'text-white/40'}`}>
+                  <span className={`text-[10px] font-mono uppercase tracking-[0.5em] mb-2 transition-colors ${isHovered ? 'text-[#ffffff]' : 'text-white/40'}`}>
                     {app.tagline}
                   </span>
-                  <h3 className={`text-5xl md:text-7xl font-black uppercase tracking-tighter transition-all duration-500 ${isHovered ? 'text-[#39FF14] -translate-y-2' : 'text-white'}`}>
+                  <h3 className={`text-5xl md:text-7xl font-black uppercase tracking-tighter transition-all duration-500 ${isHovered ? 'text-[#ffffff] -translate-y-2' : 'text-white'}`}>
                     {app.title}
                   </h3>
                 </div>
@@ -69,8 +69,8 @@ export const TriptychApps: React.FC<TriptychAppsProps> = ({ lang }) => {
                       {app.desc}
                     </p>
                     <button className="flex items-center gap-4 group/btn">
-                      <span className="w-10 h-[1px] bg-[#39FF14] transition-all group-hover/btn:w-16"></span>
-                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#39FF14]">{lang === 'ro' ? 'Deschide Aplicația' : lang === 'es' ? 'Abrir Aplicación' : 'Launch Module'}</span>
+                      <span className="w-10 h-[1px] bg-[#ffffff] transition-all group-hover/btn:w-16"></span>
+                      <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#ffffff]">{lang === 'ro' ? 'Deschide Aplicația' : lang === 'es' ? 'Abrir Aplicación' : 'Launch Module'}</span>
                     </button>
                   </div>
                 </div>
@@ -78,7 +78,7 @@ export const TriptychApps: React.FC<TriptychAppsProps> = ({ lang }) => {
             </div>
 
             {/* Hover Border Accent */}
-            <div className={`absolute inset-x-0 bottom-0 h-1 bg-[#39FF14] transition-transform duration-700 origin-left ${isHovered ? 'scale-x-100' : 'scale-x-0'}`}></div>
+            <div className={`absolute inset-x-0 bottom-0 h-1 bg-[#ffffff] transition-transform duration-700 origin-left ${isHovered ? 'scale-x-100' : 'scale-x-0'}`}></div>
           </div>
         );
       })}

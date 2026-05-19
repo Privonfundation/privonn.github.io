@@ -54,14 +54,14 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
         <div className="max-w-7xl mx-auto px-5 md:px-10 flex justify-between items-center">
           
           <Link to="/" className="flex items-center gap-3 md:gap-4 group">
-            <Logo className="w-7 h-7 md:w-9 md:h-9 transition-all duration-500 group-hover:shadow-[0_0_20px_#39FF14]" />
+            <Logo className="w-7 h-7 md:w-9 md:h-9 transition-all duration-500 group-hover:shadow-[0_0_20px_#ffffff]" />
             <div className="flex flex-col">
               <h2 className="font-black text-[9px] md:text-[12px] tracking-widest uppercase leading-none mb-1 md:mb-1.5">
                 <span className="text-white">Obscurity</span>
-                <span className="text-[#39FF14]">Security</span>
+                <span className="text-[#ffffff]">Security</span>
               </h2>
               <div className="flex items-center gap-1 md:gap-1.5">
-                <span className="w-0.5 h-0.5 md:w-1 md:h-1 rounded-full bg-[#39FF14] shadow-[0_0_5px_#39FF14] animate-pulse"></span>
+                <span className="w-0.5 h-0.5 md:w-1 md:h-1 rounded-full bg-[#ffffff] shadow-[0_0_5px_#ffffff] animate-pulse"></span>
                 <span className="text-[6px] md:text-[8px] font-mono text-white font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase leading-none">
                   {lang === 'ro' ? 'Pentru Oameni' : lang === 'es' ? 'Para Personas' : 'For People'}
                 </span>
@@ -82,8 +82,8 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
 
               {langOpen && (
                 <div className="absolute right-0 top-full mt-3 w-48 z-[120]">
-                  <div className="relative bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-xl shadow-[0_0_60px_rgba(57,255,20,0.1)] overflow-hidden">
-                    <div className="absolute -top-[5px] right-6 w-2.5 h-2.5 bg-black/40 border-t border-l border-[#39FF14]/30 rotate-45"></div>
+                  <div className="relative bg-black/40 backdrop-blur-lg border border-[#ffffff]/30 rounded-xl shadow-[0_0_60px_rgba(255,255,255,0.1)] overflow-hidden">
+                    <div className="absolute -top-[5px] right-6 w-2.5 h-2.5 bg-black/40 border-t border-l border-[#ffffff]/30 rotate-45"></div>
                     <div className="p-2">
                       {LANG_OPTIONS.map((option) => (
                         <button
@@ -94,13 +94,13 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
                           }}
                           className={`w-full flex items-center gap-3 px-3 py-3 rounded-xl text-left transition-all duration-300 ${
                             lang === option.code
-                              ? 'bg-[#39FF14]/10 text-[#39FF14] shadow-[inset_0_0_20px_rgba(57,255,20,0.05)]'
+                              ? 'bg-[#ffffff]/10 text-[#ffffff] shadow-[inset_0_0_20px_rgba(255,255,255,0.05)]'
                               : 'text-white/50 hover:bg-white/[0.06] hover:text-white'
                           }`}
                         >
                           <span className="text-xs font-mono font-bold tracking-wide flex-1">{option.label}</span>
                           {lang === option.code ? (
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_8px_#39FF14]"></span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff] shadow-[0_0_8px_#ffffff]"></span>
                           ) : (
                             <span className="w-1.5 h-1.5 rounded-full bg-white/10"></span>
                           )}
@@ -117,7 +117,7 @@ export const AboutNavbar: React.FC<AboutNavbarProps> = ({ lang, setLang }) => {
               className="group flex items-center justify-center md:gap-4 w-10 h-10 md:w-auto md:h-auto md:py-2 md:pl-4 md:pr-2 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition-all active:scale-95"
             >
               <span className="hidden md:inline text-[9px] font-bold uppercase tracking-[0.4em] text-white/60 group-hover:text-white pt-0.5">{lang === 'ro' ? 'Meniu' : lang === 'es' ? 'Menú' : 'Menu'}</span>
-              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center group-hover:bg-[#39FF14] transition-all">
+              <div className="w-7 h-7 md:w-8 md:h-8 rounded-full bg-white flex items-center justify-center group-hover:bg-[#ffffff] transition-all">
                 <div className="relative w-2.5 h-2.5 md:w-3 md:h-3 flex flex-col justify-center items-center gap-[2.5px] md:gap-[3px]">
                   <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-[2px] w-3 md:w-3' : 'w-3 md:w-3'}`}></span>
                   <span className={`h-[1.2px] md:h-[1.5px] bg-black transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-[2px] w-3 md:w-3' : 'w-1.5 md:w-1.5 self-end'}`}></span>

@@ -15,7 +15,7 @@
 /* Efect de scanare subtil pe fundal */
 .bg-blueprint {
   background-image: 
-    radial-gradient(rgba(57, 255, 20, 0.03) 1px, transparent 1px);
+    radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   pointer-events: none;
 }

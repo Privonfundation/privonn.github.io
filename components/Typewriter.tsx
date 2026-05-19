@@ -72,7 +72,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, highlightWords, sp
         parts.push(<span key={`t-${last}`}>{displayed.slice(last, m.start)}</span>);
       }
       parts.push(
-        <span key={`h-${m.start}`} className="text-[#39FF14] underline decoration-[#39FF14]/60 underline-offset-4 decoration-2 font-bold">
+        <span key={`h-${m.start}`} className="text-[#ffffff] underline decoration-[#ffffff]/60 underline-offset-4 decoration-2 font-bold">
           {displayed.slice(m.start, m.end)}
         </span>
       );
@@ -88,7 +88,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, highlightWords, sp
   return (
     <span className={className}>
       {renderText()}
-      <span className={`inline-block w-[2px] h-[0.8em] bg-[#39FF14] ml-0.5 align-middle transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
+      <span className={`inline-block w-[2px] h-[0.8em] bg-[#ffffff] ml-0.5 align-middle transition-opacity ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
     </span>
   );
 };

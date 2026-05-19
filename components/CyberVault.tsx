@@ -63,8 +63,8 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
 
       <div className="relative z-20 px-6 md:px-20 mb-4">
         <div className="flex items-center gap-4 mb-2">
-           <div className="h-[1px] w-12 bg-[#39FF14]"></div>
-           <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">Terminal_Output</span>
+           <div className="h-[1px] w-12 bg-[#ffffff]"></div>
+           <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.4em] font-bold">Terminal_Output</span>
         </div>
         <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none">
           {t.APPS_SECTION_TITLE}
@@ -92,31 +92,31 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                 
                 {/* Decorative Grid */}
                 <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.08] transition-opacity duration-500">
-                   <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#39FF14 1px, transparent 1px), linear-gradient(90deg, #39FF14 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+                   <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
                 </div>
 
                 {/* Scanline Overlay activat în timpul glitch-ului */}
                 {isActive && isGlitching && (
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#39FF14]/20 to-transparent h-2 w-full animate-scan z-20"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#ffffff]/20 to-transparent h-2 w-full animate-scan z-20"></div>
                 )}
 
                 {/* Content */}
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-12">
-                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-[#39FF14]/50 transition-colors duration-300">
-                      <i className={`${app.icon} text-2xl text-white/40 group-hover:text-[#39FF14] transition-colors`}></i>
+                    <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-[#ffffff]/50 transition-colors duration-300">
+                      <i className={`${app.icon} text-2xl text-white/40 group-hover:text-[#ffffff] transition-colors`}></i>
                     </div>
                     {isActive && (
                       <div className="flex flex-col items-end gap-1">
                         <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Signal_Strength</span>
                         <div className="flex gap-0.5">
-                          {[1,2,3,4,5].map(i => <div key={i} className={`w-3 h-1 ${isGlitching ? 'bg-red-500/40' : 'bg-[#39FF14]/40'}`}></div>)}
+                          {[1,2,3,4,5].map(i => <div key={i} className={`w-3 h-1 ${isGlitching ? 'bg-red-500/40' : 'bg-[#ffffff]/40'}`}></div>)}
                         </div>
                       </div>
                     )}
                   </div>
 
-                  <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 group-hover:text-[#39FF14] transition-colors duration-300">
+                  <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter mb-6 group-hover:text-[#ffffff] transition-colors duration-300">
                     {app.title}
                   </h3>
 
@@ -125,7 +125,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                   </p>
 
                   <div className="mt-auto flex flex-wrap items-center gap-8">
-                    <button className="px-10 py-5 bg-[#39FF14] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(57,255,20,0.2)]">
+                    <button className="px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
                       {lang === 'ro' ? 'Deschide Modulul' : lang === 'es' ? 'Abrir Módulo' : 'Initialize Module'}
                     </button>
                   </div>
@@ -156,7 +156,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
             <div 
               key={i}
               className={`h-[4px] transition-all duration-300 rounded-full ${
-                i === activeIndex ? 'w-12 bg-[#39FF14] shadow-[0_0_15px_#39FF14]' : 'w-4 bg-white/10'
+                i === activeIndex ? 'w-12 bg-[#ffffff] shadow-[0_0_15px_#ffffff]' : 'w-4 bg-white/10'
               }`}
             />
           ))}

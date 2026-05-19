@@ -9,7 +9,7 @@ const AuroraMaterial = () => {
   const shaderArgs = useMemo(() => ({
     uniforms: {
       uTime: { value: 0 },
-      uColor: { value: new THREE.Color('#39FF14') },
+      uColor: { value: new THREE.Color('#ffffff') },
       uResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
     },
     vertexShader: `

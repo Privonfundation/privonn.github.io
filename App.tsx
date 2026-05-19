@@ -13,30 +13,30 @@ const renderHighlighted = (text: string, className = '') => {
   if (parts.length === 1) return <span className={className}>{text}</span>;
   return (
     <span className={className}>
-      <span className="text-[#39FF14]">{parts[0]}</span>
+      <span className="text-[#ffffff]">{parts[0]}</span>
       <span>{parts[1]}</span>
     </span>
   );
 };
 
 const ArticleCard = memo(({ art }: { art: any }) => (
-  <div className="flex-shrink-0 relative group bg-[#080808]/70 border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 overflow-hidden min-w-[210px] md:min-w-[290px] max-w-[210px] md:max-w-[290px] hover:border-[#39FF14]/30 transition-all duration-500">
+  <div className="flex-shrink-0 relative group bg-[#080808]/70 border border-white/10 rounded-[1.5rem] md:rounded-[2rem] p-4 md:p-6 overflow-hidden min-w-[210px] md:min-w-[290px] max-w-[210px] md:max-w-[290px] hover:border-[#ffffff]/30 transition-all duration-500">
     <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none">
-      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#39FF14 1px, transparent 1px), linear-gradient(90deg, #39FF14 1px, transparent 1px)', backgroundSize: '28px 28px' }}></div>
+      <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }}></div>
     </div>
     <div className="relative z-10 flex flex-col gap-2">
       <div className="flex items-center justify-between">
-        <span className="text-[8px] font-mono text-[#39FF14]/50 tracking-wider">{art.id}</span>
+        <span className="text-[8px] font-mono text-[#ffffff]/50 tracking-wider">{art.id}</span>
         <span className="text-[7px] font-mono text-white/20 uppercase tracking-[0.2em] bg-white/5 px-2 py-0.5 rounded-full">{art.pilar}</span>
       </div>
-      <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-white/80 group-hover:text-[#39FF14] transition-colors duration-300 leading-tight">
+      <h4 className="text-sm md:text-base font-black uppercase tracking-tight text-white/80 group-hover:text-[#ffffff] transition-colors duration-300 leading-tight">
         {art.title}
       </h4>
       <p className="text-[9px] md:text-[10px] font-mono text-white/40 leading-relaxed line-clamp-2 group-hover:text-white/60 transition-colors duration-300">
         {art.desc}
       </p>
       <div className="flex items-center gap-2 mt-1">
-        <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14]/60 shadow-[0_0_6px_rgba(57,255,20,0.3)]"></span>
+        <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff]/60 shadow-[0_0_6px_rgba(255,255,255,0.3)]"></span>
         <span className="text-[7px] font-mono text-white/15">{art.status}</span>
       </div>
     </div>
@@ -49,9 +49,9 @@ const ArticleCard = memo(({ art }: { art: any }) => (
 
 const Connector = () => (
   <div className="flex items-center flex-shrink-0 mx-1 md:mx-2">
-    <div className="w-3 md:w-4 h-px bg-gradient-to-r from-transparent via-[#39FF14]/15 to-transparent"></div>
-    <div className="w-1 h-1 rounded-full bg-[#39FF14]/20"></div>
-    <div className="w-3 md:w-4 h-px bg-gradient-to-l from-transparent via-[#39FF14]/15 to-transparent"></div>
+    <div className="w-3 md:w-4 h-px bg-gradient-to-r from-transparent via-[#ffffff]/15 to-transparent"></div>
+    <div className="w-1 h-1 rounded-full bg-[#ffffff]/20"></div>
+    <div className="w-3 md:w-4 h-px bg-gradient-to-l from-transparent via-[#ffffff]/15 to-transparent"></div>
   </div>
 );
 
@@ -95,7 +95,7 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#39FF14] selection:text-black overflow-x-hidden isolate">
+    <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden isolate">
       <div 
         ref={parallaxBgRef}
         className="fixed inset-0 -z-20 bg-blueprint opacity-20 pointer-events-none will-change-transform"
@@ -106,20 +106,20 @@ const App: React.FC = () => {
 
       <section ref={heroRef} id="hero" className="relative min-h-screen flex flex-col items-center justify-center px-5 pt-32 md:pt-48 overflow-visible">
         <div className="absolute inset-0 z-[1] pointer-events-none opacity-75" style={{ maskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 55%, transparent 100%)' }}>
-          <Silk speed={5} scale={1} color="#39FF14" noiseIntensity={1.5} rotation={0} />
+          <Silk speed={5} scale={1} color="#ffffff" noiseIntensity={1.5} rotation={0} />
         </div>
         
         <div className="relative z-[10] w-full max-w-6xl mx-auto text-center flex flex-col items-center pointer-events-none">
           <div className="mb-10 pointer-events-auto">
             <h1 className="fluid-h1 font-black uppercase">
-              <span className={`reveal-text block text-[#39FF14] drop-shadow-[0_0_60px_rgba(57,255,20,0.6)] ${active ? 'active' : ''}`} style={{ transitionDelay: '0.1s' }}>Obscurity</span>
+              <span className={`reveal-text block text-[#ffffff] drop-shadow-[0_0_60px_rgba(255,255,255,0.6)] ${active ? 'active' : ''}`} style={{ transitionDelay: '0.1s' }}>Obscurity</span>
               <span className={`reveal-text block text-white ${active ? 'active' : ''}`} 
                     style={{ transitionDelay: '0.3s' }}>Security</span>
             </h1>
           </div>
 
-          <div className="reveal-text inline-flex items-center gap-2 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md border border-[#39FF14]/40 text-[10px] uppercase tracking-[0.5em] font-mono font-bold text-[#39FF14] mb-12 animate-pulse pointer-events-auto" style={{ transitionDelay: '0.4s' }}>
-            <span className="w-1.5 h-1.5 rounded-full bg-[#39FF14] shadow-[0_0_15px_#39FF14]"></span> PROTOCOL 3305
+          <div className="reveal-text inline-flex items-center gap-2 px-6 py-2 rounded-full bg-black/60 backdrop-blur-md border border-[#ffffff]/40 text-[10px] uppercase tracking-[0.5em] font-mono font-bold text-[#ffffff] mb-12 animate-pulse pointer-events-auto" style={{ transitionDelay: '0.4s' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-[#ffffff] shadow-[0_0_15px_#ffffff]"></span> PROTOCOL 3305
           </div>
 
           <div className="reveal-text relative group mb-12 max-w-4xl w-full pointer-events-auto" style={{ transitionDelay: '0.5s' }}>
@@ -127,21 +127,21 @@ const App: React.FC = () => {
             <div className="relative flex flex-col items-center py-12 px-6">
               <div className="flex flex-col items-center gap-6 w-full">
                 <h2 className="text-sm sm:text-lg md:text-3xl font-mono font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] md:tracking-[0.6em] text-white px-2 break-words">
-                  {t.HERO_SLOGAN_1} <span className="text-[#39FF14]">{t.HERO_SLOGAN_2}</span>
+                  {t.HERO_SLOGAN_1} <span className="text-[#ffffff]">{t.HERO_SLOGAN_2}</span>
                 </h2>
                 <div className="w-24 h-[1px] bg-white/30 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-[#39FF14] animate-laser-move"></div>
+                  <div className="absolute inset-0 bg-[#ffffff] animate-laser-move"></div>
                 </div>
                 <h2 className="text-sm sm:text-lg md:text-3xl font-mono font-black uppercase tracking-[0.1em] sm:tracking-[0.3em] md:tracking-[0.6em] text-white px-2 break-words">
-                  {t.HERO_SLOGAN_3} <span className="text-[#39FF14]">{t.HERO_SLOGAN_4}</span>
+                  {t.HERO_SLOGAN_3} <span className="text-[#ffffff]">{t.HERO_SLOGAN_4}</span>
                 </h2>
               </div>
             </div>
           </div>
 
           <div className="reveal-text max-w-2xl mb-16 w-full px-4 pointer-events-auto" style={{ transitionDelay: '0.7s' }}>
-            <div className="relative overflow-hidden bg-black/40 backdrop-blur-lg border border-[#39FF14]/30 rounded-xl p-8 shadow-[0_0_60px_rgba(57,255,20,0.1)]">
-              <div className="absolute inset-x-0 h-[1px] bg-[#39FF14]/50 animate-scan pointer-events-none"></div>
+            <div className="relative overflow-hidden bg-black/40 backdrop-blur-lg border border-[#ffffff]/30 rounded-xl p-8 shadow-[0_0_60px_rgba(255,255,255,0.1)]">
+              <div className="absolute inset-x-0 h-[1px] bg-[#ffffff]/50 animate-scan pointer-events-none"></div>
               <div className="relative z-10 text-center">
                 <p className="text-[14px] md:text-[16px] font-mono font-bold uppercase tracking-[0.2em] text-white/95 leading-relaxed">
                   {t.HERO_DESC}
@@ -151,7 +151,7 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 reveal-text mb-20 pointer-events-auto" style={{ transitionDelay: '0.9s' }}>
-            <Link to="/about" className="w-full sm:w-auto px-10 py-5 bg-[#39FF14] text-black font-black uppercase text-[11px] tracking-widest rounded-full shadow-[0_0_50px_rgba(57,255,20,0.4)] transition-all hover:scale-105 hover:bg-white active:scale-95 text-center flex items-center justify-center gap-2">
+            <Link to="/about" className="w-full sm:w-auto px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all hover:scale-105 hover:bg-white active:scale-95 text-center flex items-center justify-center gap-2">
               <i className="fa-solid fa-user-shield text-sm"></i>
               {lang === 'ro' ? 'Despre Noi' : lang === 'es' ? 'Sobre Nosotros' : 'About Us'}
             </Link>
@@ -172,14 +172,14 @@ const App: React.FC = () => {
           <div className="absolute inset-0 bg-blueprint opacity-5"></div>
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
           <div className="absolute bottom-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to top, #1a1a1e, transparent)' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#39FF14] blur-[120px] opacity-20"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#ffffff] blur-[120px] opacity-20"></div>
         </div>
 
         <div className="relative z-20 max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-center gap-4 mb-6 md:mb-16">
-            <div className="h-[1px] w-16 bg-[#39FF14]"></div>
-            <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">{t.VERSE_LABEL}</span>
-            <div className="h-[1px] w-16 bg-[#39FF14]"></div>
+            <div className="h-[1px] w-16 bg-[#ffffff]"></div>
+            <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">{t.VERSE_LABEL}</span>
+            <div className="h-[1px] w-16 bg-[#ffffff]"></div>
           </div>
 
           <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
@@ -225,7 +225,7 @@ const App: React.FC = () => {
               verseStage === 'third' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95 pointer-events-none'
             }`}>
               <div className="w-full max-w-3xl mx-auto px-6">
-                <div className="bg-black/40 backdrop-blur-lg border border-[#39FF14]/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(57,255,20,0.15),0_0_30px_rgba(57,255,20,0.1),inset_0_0_40px_rgba(57,255,20,0.04)]">
+                <div className="bg-black/40 backdrop-blur-lg border border-[#ffffff]/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(255,255,255,0.04)]">
                   <blockquote>
                     <p className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-[1.3] text-white/90">
                       <Typewriter
@@ -269,7 +269,7 @@ const App: React.FC = () => {
       <section id="vision" className="py-32 md:py-64 relative overflow-hidden section-content-visibility" style={{ background: '#1a1a1e' }}>
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[800px] opacity-[0.08] blur-[3px] pointer-events-none">
-            <Logo className="w-full h-full" glow={false} color="#39FF14" />
+            <Logo className="w-full h-full" glow={false} color="#ffffff" />
           </div>
           <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
             {[
@@ -292,7 +292,7 @@ const App: React.FC = () => {
                   transform: `rotate(${c.r}deg) scale(${c.s})`,
                   fontSize: `clamp(${1.2 + i * 0.2}rem, ${3 + i * 0.5}vw, ${2.5 + i * 0.3}rem)`,
                   opacity: 0.2 + (i % 3) * 0.1,
-                  textShadow: '0 0 30px rgba(57,255,20,0.08)',
+                  textShadow: '0 0 30px rgba(255,255,255,0.08)',
                 }}
               >
                 {lang === 'ro' ? 'NU VREM' : lang === 'es' ? 'NO QUEREMOS' : 'WE DON\'T WANT'} {c.name}
@@ -311,13 +311,13 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 relative">
           <div className="reveal-text">
             <div className="flex items-center gap-4 mb-6">
-              <div className="h-px w-16 bg-[#39FF14]"></div>
-              <span className="text-[#39FF14] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
+              <div className="h-px w-16 bg-[#ffffff]"></div>
+              <span className="text-[#ffffff] font-mono text-xs uppercase tracking-[0.6em] font-bold">{t.THE_STANDARD}</span>
             </div>
 
             <h2 className="text-5xl md:text-8xl font-black uppercase tracking-tighter mb-8 md:mb-12 leading-[0.85] relative">
               <span className="animate-glitch-protocol">
-                Protocol 3305<span className="text-[#39FF14]/30">:</span>
+                Protocol 3305<span className="text-[#ffffff]/30">:</span>
               </span>
               <br/>
               <span className="text-white/10 block animate-nod mt-6 md:mt-10">
@@ -326,28 +326,28 @@ const App: React.FC = () => {
             </h2>
 
             <div className="relative mb-10 md:mb-16 p-5 md:p-10 rounded-2xl border border-white/10 bg-white/[0.02] overflow-hidden group">
-              <div className="absolute top-0 right-0 w-64 h-64 bg-[#39FF14]/5 blur-[120px] rounded-full group-hover:bg-[#39FF14]/10 transition-all duration-700"></div>
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#ffffff]/5 blur-[120px] rounded-full group-hover:bg-[#ffffff]/10 transition-all duration-700"></div>
               <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 blur-[80px] rounded-full"></div>
               <div className="relative z-10">
                 <p className="text-sm md:text-base font-mono text-white/60 leading-relaxed mb-5">
                   {t.PREAMBLE_TEXT}
                 </p>
-                <p className="text-sm md:text-base font-mono text-white/80 leading-relaxed border-l-2 border-[#39FF14]/40 pl-5">
+                <p className="text-sm md:text-base font-mono text-white/80 leading-relaxed border-l-2 border-[#ffffff]/40 pl-5">
                   {t.PROTOCOL_DESC}
                 </p>
                 <div className="mt-5 pt-5 border-t border-white/10 flex flex-wrap items-center gap-3">
                   <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.15em]">
                     {lang === 'ro' ? 'Aderență:' : lang === 'es' ? 'Adhesión:' : 'Adherence:'}
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[8px] font-mono text-[#39FF14] uppercase tracking-[0.3em]">Zero-Knowledge</span>
-                  <span className="px-3 py-1 rounded-full bg-[#39FF14]/10 border border-[#39FF14]/30 text-[8px] font-mono text-[#39FF14] uppercase tracking-[0.3em]">Zero-Trust</span>
+                  <span className="px-3 py-1 rounded-full bg-[#ffffff]/10 border border-[#ffffff]/30 text-[8px] font-mono text-[#ffffff] uppercase tracking-[0.3em]">Zero-Knowledge</span>
+                  <span className="px-3 py-1 rounded-full bg-[#ffffff]/10 border border-[#ffffff]/30 text-[8px] font-mono text-[#ffffff] uppercase tracking-[0.3em]">Zero-Trust</span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6 px-1">
               <div className="flex items-center gap-3">
-                <span className="w-2 h-2 rounded-full bg-[#39FF14] shadow-[0_0_10px_#39FF14] animate-pulse"></span>
+                <span className="w-2 h-2 rounded-full bg-[#ffffff] shadow-[0_0_10px_#ffffff] animate-pulse"></span>
                 <span className="text-[9px] font-mono text-white/30 uppercase tracking-[0.3em]">
                   {articles.length}/{articles.length} {lang === 'ro' ? 'Articole Active' : lang === 'es' ? 'Artículos Activos' : 'Articles Enforced'}
                 </span>
@@ -431,7 +431,7 @@ const App: React.FC = () => {
                 <Logo className="w-10 h-10" glow={true} />
                 <div className="flex flex-col">
                   <span className="font-black tracking-[0.3em] uppercase text-sm leading-none">
-                    <span className="text-white">Obscurity</span><span className="text-[#39FF14]">Security</span>
+                    <span className="text-white">Obscurity</span><span className="text-[#ffffff]">Security</span>
                   </span>
                 </div>
               </div>
@@ -442,12 +442,12 @@ const App: React.FC = () => {
             
             <div className="grid grid-cols-2 gap-16 md:gap-32 text-[10px] font-bold uppercase tracking-[0.4em] text-white/30">
               <div className="flex flex-col gap-8">
-                <span className="text-[#39FF14] opacity-40 font-mono tracking-[0.6em]">Network</span>
+                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.6em]">Network</span>
                 <a href="#" className="hover:text-white transition-colors">Infrastructure</a>
                 <a href="#" className="hover:text-white transition-colors">Github</a>
               </div>
               <div className="flex flex-col gap-8">
-                <span className="text-[#39FF14] opacity-40 font-mono tracking-[0.6em]">Legal</span>
+                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.6em]">Legal</span>
                 <a href="#" className="hover:text-white transition-colors">Ethics_Code</a>
                 <a href="#" className="hover:text-white transition-colors">Audit_2024</a>
               </div>

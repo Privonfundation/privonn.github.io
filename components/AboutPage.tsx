@@ -105,11 +105,11 @@ Estamos aquí para hacer de la privacidad un estándar. Amamos la transparencia,
 
 const SectionTitle: React.FC<{ title: string }> = ({ title }) => (
   <div className="flex items-center justify-center gap-4 mb-8">
-    <div className="h-[1px] w-12 md:w-16 bg-[#39FF14]"></div>
-    <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">
+    <div className="h-[1px] w-12 md:w-16 bg-[#ffffff]"></div>
+    <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">
       {title}
     </span>
-    <div className="h-[1px] w-12 md:w-16 bg-[#39FF14]"></div>
+    <div className="h-[1px] w-12 md:w-16 bg-[#ffffff]"></div>
   </div>
 );
 
@@ -118,7 +118,7 @@ export const AboutPage: React.FC = () => {
   const content = ABOUT_CONTENT[lang];
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#39FF14] selection:text-black overflow-x-hidden relative">
+    <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden relative">
       <AboutScene />
       <AboutNavbar lang={lang} setLang={setLang} />
 
@@ -126,8 +126,8 @@ export const AboutPage: React.FC = () => {
         <div className="max-w-3xl mx-auto text-center">
           <div className="reveal-text active mb-16">
             <div className="relative inline-block">
-              <div className="absolute inset-0 bg-[#39FF14]/30 blur-2xl rounded-full animate-pulse pointer-events-none"></div>
-              <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-2 border-[#39FF14]/60 shadow-[0_0_40px_rgba(57,255,20,0.3)] bg-black/80 backdrop-blur-sm flex items-center justify-center">
+              <div className="absolute inset-0 bg-[#ffffff]/30 blur-2xl rounded-full animate-pulse pointer-events-none"></div>
+              <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-2 border-[#ffffff]/60 shadow-[0_0_40px_rgba(255,255,255,0.3)] bg-black/80 backdrop-blur-sm flex items-center justify-center">
                 <Logo className="w-24 h-24 md:w-32 md:h-32" glow={true} />
               </div>
             </div>
@@ -176,35 +176,35 @@ export const AboutPage: React.FC = () => {
           </div>
 
           <div className="relative group mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#39FF14]/0 via-[#39FF14]/20 to-[#39FF14]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 transition-all duration-500 group-hover:border-[#39FF14]/40">
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#ffffff]/0 via-[#ffffff]/20 to-[#ffffff]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 transition-all duration-500 group-hover:border-[#ffffff]/40">
               <div className="flex flex-col items-center text-center mb-8">
                 <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-[#39FF14]/20 blur-2xl rounded-full animate-pulse"></div>
-                  <div className="relative w-20 h-20 rounded-full border-2 border-[#39FF14]/60 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#ffffff]/20 blur-2xl rounded-full animate-pulse"></div>
+                  <div className="relative w-20 h-20 rounded-full border-2 border-[#ffffff]/60 flex items-center justify-center">
                     <Logo className="w-12 h-12" glow={true} />
                   </div>
                 </div>
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">
-                  <span className="text-[#39FF14]">{content.protocolLabel}</span>
+                  <span className="text-[#ffffff]">{content.protocolLabel}</span>
                 </h3>
                 <p className="text-white/40 font-mono text-xs uppercase tracking-[0.3em] mb-4">
                   {content.protocolNote}
                 </p>
-                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#39FF14] to-transparent"></div>
+                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#ffffff] to-transparent"></div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
                 {content.protocolArticles.map((article, index) => (
                   <div 
                     key={article.id}
-                    className="group/item relative p-4 bg-black/40 border border-white/5 rounded-xl transition-all duration-300 hover:border-[#39FF14]/30 hover:bg-white/[0.02]"
+                    className="group/item relative p-4 bg-black/40 border border-white/5 rounded-xl transition-all duration-300 hover:border-[#ffffff]/30 hover:bg-white/[0.02]"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-[9px] font-mono text-[#39FF14]/60 shrink-0">{article.id}</span>
+                      <span className="text-[9px] font-mono text-[#ffffff]/60 shrink-0">{article.id}</span>
                       <div>
-                        <h4 className="text-sm font-semibold text-white mb-1 group-hover/item:text-[#39FF14] transition-colors">
+                        <h4 className="text-sm font-semibold text-white mb-1 group-hover/item:text-[#ffffff] transition-colors">
                           {article.title}
                         </h4>
                         <p className="text-xs text-white/40 leading-relaxed">

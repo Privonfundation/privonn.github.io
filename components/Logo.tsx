@@ -7,7 +7,7 @@ interface LogoProps {
   color?: string;
 }
 
-export const Logo: React.FC<LogoProps> = memo(({ className = "w-10 h-10", glow = true, color = '#39FF14' }) => {
+export const Logo: React.FC<LogoProps> = memo(({ className = "w-10 h-10", glow = true, color = '#ffffff' }) => {
   return (
     <div className={`relative inline-block ${className} gpu-layer animate-logo-entry`}>
       {glow && (
