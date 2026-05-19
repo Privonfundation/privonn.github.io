@@ -201,7 +201,7 @@ const App: React.FC = () => {
         </div>
 
         <div className="relative z-20 max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-center gap-4 mb-16">
+          <div className="flex items-center justify-center gap-4 mb-6 md:mb-16">
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
             <span className="text-[#39FF14] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">{t.VERSE_LABEL}</span>
             <div className="h-[1px] w-16 bg-[#39FF14]"></div>
@@ -228,7 +228,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%] -mt-24 md:mt-16 self-end translate-x-2 md:translate-x-0 rotate-1 md:rotate-0">
+              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%] -mt-2 md:mt-16 self-end translate-x-2 md:translate-x-0 rotate-1 md:rotate-0">
                 <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:translate-x-[200%] opacity-0' : ''}`}>
                   <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
                      <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
