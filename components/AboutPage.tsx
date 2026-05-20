@@ -143,7 +143,7 @@ export const AboutPage: React.FC = () => {
   const c = ABOUT[lang];
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#111] text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden relative">
       <AboutScene />
       <AboutNavbar lang={lang} setLang={setLang} />
 
@@ -340,7 +340,7 @@ export const AboutPage: React.FC = () => {
         </section>
 
         {/* Footer */}
-        <footer className="py-16 border-t border-white/5 px-5 bg-black">
+        <footer className="py-16 border-t border-white/5 px-5 bg-[#111]">
           <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
             <div className="flex items-center gap-4">
               <Logo className="w-8 h-8" glow={false} color="#fff" />
