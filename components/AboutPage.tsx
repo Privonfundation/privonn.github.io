@@ -352,7 +352,7 @@ export const AboutPage: React.FC = () => {
               <Logo className="w-8 h-8" glow={false} color="#fff" />
               <div className="flex flex-col">
                 <span className="font-black tracking-[0.3em] uppercase text-xs leading-none text-white">ObscuritySecurity</span>
-                <span className="text-[7px] font-mono text-white/15 uppercase tracking-[0.4em] mt-1">Open Source</span>
+                <span className="text-[7px] font-mono text-white/50 uppercase tracking-[0.4em] mt-1">For People</span>
               </div>
             </div>
             <div className="flex flex-col items-center md:items-end gap-1">
