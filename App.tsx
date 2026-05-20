@@ -439,6 +439,7 @@ const App: React.FC = () => {
                   <span className="font-black tracking-[0.3em] uppercase text-sm leading-none">
                     <span className="text-white">Obscurity</span><span className="text-[#ffffff]">Security</span>
                   </span>
+                  <span className="text-[7px] font-mono text-white/20 uppercase tracking-[0.4em] mt-1">For People</span>
                 </div>
               </div>
               <p className="text-[11px] font-mono text-white/30 max-w-sm leading-relaxed uppercase tracking-[0.2em]">
