@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Logo } from './Logo';
 import { AboutScene } from './AboutScene';
 import { AboutNavbar } from './AboutNavbar';
@@ -35,15 +35,15 @@ const ABOUT_CONTENT = {
     whoWeAreTitle: 'Cine Suntem',
     description: `Suntem ObscuritySecurity, o organizație nonprofit care pune Omul pe primul loc, înaintea profitului. Avem principii și valori negociabile și credem că libertatea, securitatea, anonimatul, intimitatea, personalizarea și transparența sunt factori esențiali.
 
-Filozofia noastră: vedem persoana din spatele ecranului. Pentru noi nu există utilizatori — mai mult de atât, credem că securitatea nu ar trebui să fie niciodată un lux, ci o funcționalitate necesară care se oferă în orice software gratuit.
+    Filozofia noastră: vedem persoana din spatele ecranului. Pentru noi nu există utilizatori — mai mult de atât, credem că securitatea nu ar trebui să fie niciodată un lux, ci o funcționalitate necesară care se oferă în orice software gratuit.
 
-Suntem aici ca să facem intimitatea standard. Iubim transparența, așa că toate proiectele noastre sunt cu cod deschis.`
+    Suntem aici ca să facem intimitatea standard. Iubim transparența, așa că toate proiectele noastre sunt cu cod deschis.`
   },
   en: {
     label: 'About Us',
     whoWeAre: 'Who We Are',
     whyWeStarted: 'Why We Started',
-    verifyTitle: 'Don\'t Take Our Word For It',
+    verifyTitle: "Don't Take Our Word For It",
     verifyDescription: `We are not the typical organization or company that sells you privacy or does marketing. Everything is transparent. Open source. You can verify for yourself that everything we do is true.
 
     That's exactly why we developed Protocol-3305 — to never abandon our principles.`,
@@ -97,132 +97,149 @@ We are here to make privacy the standard. We love transparency, so all our proje
     whoWeAreTitle: 'Quiénes Somos',
     description: `Somos ObscuritySecurity, una organización sin fines de lucro que pone al Humano en primer lugar, antes del lucro. Tenemos principios y valores negociables y creemos que la libertad, la seguridad, el anonimato, la privacidad, la personalización y la transparencia son factores esenciales.
 
-Nuestra filosofía: vemos a la persona detrás de la pantalla. Para nosotros no existen "usuarios" — más que eso, creemos que la seguridad nunca debería ser un lujo, sino una funcionalidad necesaria que se ofrece en cualquier software gratuito.
+    Nuestra filosofía: vemos a la persona detrás de la pantalla. Para nosotros no existen "usuarios" — más que eso, creemos que la seguridad nunca debería ser un lujo, sino una funcionalidad necesaria que se ofrece en cualquier software gratuito.
 
-Estamos aquí para hacer de la privacidad un estándar. Amamos la transparencia, así que todos nuestros proyectos son de código abierto.`
+    Estamos aquí para hacer de la privacidad un estándar. Amamos la transparencia, así que todos nuestros proyectos son de código abierto.`
   }
 };
 
+const useReveal = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { el.classList.add('opacity-100', 'translate-y-0'); el.classList.remove('opacity-0', 'translate-y-8'); }
+    }, { threshold: 0.1 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+};
+
 const SectionTitle: React.FC<{ title: string }> = ({ title }) => (
-  <div className="flex items-center justify-center gap-4 mb-8">
-    <div className="h-[1px] w-12 md:w-16 bg-[#ffffff]"></div>
-    <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">
-      {title}
-    </span>
-    <div className="h-[1px] w-12 md:w-16 bg-[#ffffff]"></div>
+  <div className="flex items-center gap-4 mb-6 md:mb-8">
+    <div className="h-px w-10 md:w-12 bg-white/30" />
+    <span className="text-white/40 font-mono text-[10px] uppercase tracking-[0.6em] font-bold">{title}</span>
+    <div className="flex-1 h-px bg-gradient-to-r from-white/10 to-transparent" />
   </div>
 );
 
 export const AboutPage: React.FC = () => {
   const [lang, setLang] = React.useState<'ro' | 'en' | 'es'>('ro');
   const content = ABOUT_CONTENT[lang];
+  const logoRef = useReveal();
+  const whoRef = useReveal();
+  const whyRef = useReveal();
+  const verifyRef = useReveal();
+  const protocolRef = useReveal();
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden relative">
       <AboutScene />
       <AboutNavbar lang={lang} setLang={setLang} />
 
-      <div className="min-h-screen flex items-center justify-center py-32 px-5 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="reveal-text active mb-16">
-            <div className="relative inline-block">
-              <div className="absolute inset-0 bg-[#ffffff]/30 blur-2xl rounded-full animate-pulse pointer-events-none"></div>
-              <div className="relative w-36 h-36 md:w-48 md:h-48 mx-auto rounded-full overflow-hidden border-2 border-[#ffffff]/60 shadow-[0_0_40px_rgba(255,255,255,0.3)] bg-black/80 backdrop-blur-sm flex items-center justify-center">
-                <Logo className="w-24 h-24 md:w-32 md:h-32" glow={true} />
-              </div>
+      <div className="relative z-10 pt-40 pb-16 px-5 max-w-5xl mx-auto">
+        {/* Logo hero */}
+        <div ref={logoRef} className="transition-all duration-700 opacity-0 translate-y-8 mb-20 md:mb-28 text-center">
+          <div className="relative inline-block">
+            <div className="absolute inset-0 bg-white/10 blur-3xl rounded-full" />
+            <div className="relative w-28 h-28 md:w-36 md:h-36 mx-auto rounded-full border border-white/10 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+              <Logo className="w-16 h-16 md:w-20 md:h-20" glow={true} />
             </div>
           </div>
+        </div>
 
+        {/* Who We Are */}
+        <section ref={whoRef} className="transition-all duration-700 opacity-0 translate-y-8 mb-20 md:mb-28">
           <SectionTitle title={content.whoWeAreTitle} />
-
-          <div className="reveal-text active space-y-8 text-left mb-16">
-            {content.description.split('\n\n').map((paragraph, index) => (
-              <p 
-                key={index}
-                className="text-base md:text-lg font-mono text-white/70 leading-relaxed"
-                style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
-              >
-                {paragraph}
-              </p>
-            ))}
+          <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.03]"
+                 style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+            <div className="relative z-10 space-y-5">
+              {content.description.split('\n\n').map((p, i) => (
+                <p key={i} className="text-sm md:text-base font-mono text-white/60 leading-relaxed">{p}</p>
+              ))}
+            </div>
+            <div className="absolute top-4 right-4 flex flex-col gap-0.5 opacity-20">
+              <div className="w-5 h-[1px] bg-white" />
+              <div className="w-2.5 h-[1px] bg-white self-end" />
+            </div>
           </div>
+        </section>
 
+        {/* Why We Started */}
+        <section ref={whyRef} className="transition-all duration-700 opacity-0 translate-y-8 mb-20 md:mb-28">
           <SectionTitle title={content.whyWeStarted} />
-
-          <div className="reveal-text active space-y-8 text-left mb-16">
-            {content.startedDescription.split('\n\n').map((paragraph, index) => (
-              <p 
-                key={index}
-                className="text-base md:text-lg font-mono text-white/70 leading-relaxed"
-                style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
-              >
-                {paragraph}
-              </p>
-            ))}
+          <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.03]"
+                 style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+            <div className="relative z-10 space-y-5">
+              {content.startedDescription.split('\n\n').map((p, i) => (
+                <p key={i} className="text-sm md:text-base font-mono text-white/60 leading-relaxed">{p}</p>
+              ))}
+            </div>
+            <div className="absolute top-4 right-4 flex flex-col gap-0.5 opacity-20">
+              <div className="w-5 h-[1px] bg-white" />
+              <div className="w-2.5 h-[1px] bg-white self-end" />
+            </div>
           </div>
+        </section>
 
+        {/* Verify */}
+        <section ref={verifyRef} className="transition-all duration-700 opacity-0 translate-y-8 mb-20 md:mb-28">
           <SectionTitle title={content.verifyTitle} />
-
-          <div className="reveal-text active space-y-8 text-left mb-12">
-            {content.verifyDescription.split('\n\n').map((paragraph, index) => (
-              <p 
-                key={index}
-                className="text-base md:text-lg font-mono text-white/70 leading-relaxed"
-                style={{ transitionDelay: `${0.2 + index * 0.15}s` }}
-              >
-                {paragraph}
-              </p>
-            ))}
+          <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.03]"
+                 style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+            <div className="relative z-10 space-y-5">
+              {content.verifyDescription.split('\n\n').map((p, i) => (
+                <p key={i} className="text-sm md:text-base font-mono text-white/60 leading-relaxed">{p}</p>
+              ))}
+            </div>
+            <div className="absolute top-4 right-4 flex flex-col gap-0.5 opacity-20">
+              <div className="w-5 h-[1px] bg-white" />
+              <div className="w-2.5 h-[1px] bg-white self-end" />
+            </div>
           </div>
+        </section>
 
-          <div className="relative group mb-16">
-            <div className="absolute -inset-1 bg-gradient-to-r from-[#ffffff]/0 via-[#ffffff]/20 to-[#ffffff]/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            <div className="relative bg-white/5 border border-white/10 rounded-2xl p-8 md:p-12 transition-all duration-500 group-hover:border-[#ffffff]/40">
-              <div className="flex flex-col items-center text-center mb-8">
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 bg-[#ffffff]/20 blur-2xl rounded-full animate-pulse"></div>
-                  <div className="relative w-20 h-20 rounded-full border-2 border-[#ffffff]/60 flex items-center justify-center">
-                    <Logo className="w-12 h-12" glow={true} />
-                  </div>
-                </div>
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">
-                  <span className="text-[#ffffff]">{content.protocolLabel}</span>
-                </h3>
-                <p className="text-white/40 font-mono text-xs uppercase tracking-[0.3em] mb-4">
-                  {content.protocolNote}
-                </p>
-                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#ffffff] to-transparent"></div>
+        {/* Protocol articles */}
+        <section ref={protocolRef} className="transition-all duration-700 opacity-0 translate-y-8 mb-16">
+          <SectionTitle title={content.protocolLabel} />
+          <div className="relative p-6 md:p-8 rounded-2xl border border-white/8 bg-white/[0.015] overflow-hidden">
+            <div className="absolute inset-0 opacity-[0.03]"
+                 style={{ backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
+            <div className="relative z-10">
+              <div className="flex items-center gap-3 mb-6 pb-4 border-b border-white/5">
+                <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
+                <span className="text-[9px] font-mono text-white/20 uppercase tracking-[0.4em]">{content.protocolNote}</span>
               </div>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-                {content.protocolArticles.map((article, index) => (
-                  <div 
-                    key={article.id}
-                    className="group/item relative p-4 bg-black/40 border border-white/5 rounded-xl transition-all duration-300 hover:border-[#ffffff]/30 hover:bg-white/[0.02]"
-                    style={{ animationDelay: `${index * 100}ms` }}
-                  >
-                    <div className="flex items-start gap-3">
-                      <span className="text-[9px] font-mono text-[#ffffff]/60 shrink-0">{article.id}</span>
-                      <div>
-                        <h4 className="text-sm font-semibold text-white mb-1 group-hover/item:text-[#ffffff] transition-colors">
-                          {article.title}
-                        </h4>
-                        <p className="text-xs text-white/40 leading-relaxed">
-                          {article.desc}
-                        </p>
-                      </div>
+                {content.protocolArticles.map((a, i) => (
+                  <div key={a.id} className="p-3.5 rounded-xl border border-white/5 bg-black/40 hover:bg-white/[0.015] hover:border-white/15 transition-all duration-300"
+                       style={{ animationDelay: `${i * 60}ms` }}>
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="text-[8px] font-mono text-white/30 tracking-wider">{a.id}</span>
+                      <span className="text-[6px] font-mono text-white/15 uppercase tracking-[0.2em] bg-white/5 px-2 py-0.5 rounded-full">{a.pilar}</span>
                     </div>
+                    <h4 className="text-xs md:text-sm font-black uppercase tracking-tight text-white/80 mb-1">{a.title}</h4>
+                    <p className="text-[9px] font-mono text-white/35 leading-relaxed">{a.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
+            <div className="absolute top-4 right-4 flex flex-col gap-0.5 opacity-20">
+              <div className="w-5 h-[1px] bg-white" />
+              <div className="w-2.5 h-[1px] bg-white self-end" />
+            </div>
           </div>
-        </div>
+        </section>
       </div>
 
-      <footer className="py-12 border-t border-white/5 px-5 bg-black">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.6em]">
+      <footer className="py-12 border-t border-white/5 px-5 bg-black relative z-10">
+        <div className="max-w-5xl mx-auto text-center">
+          <p className="text-[10px] font-mono text-white/15 uppercase tracking-[0.6em]">
             ©2024 OBSCURITYSECURITY_NON_PROFIT
           </p>
         </div>
