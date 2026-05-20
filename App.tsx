@@ -461,7 +461,7 @@ const App: React.FC = () => {
           </div>
           
           <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between gap-8 text-[10px] font-mono text-white/20 uppercase tracking-[0.6em]">
-            <span>©2024 OBSCURITYSECURITY</span>
+            <span>©2024 OBSCURITYSECURITY — AGPL-3.0</span>
             <div className="flex gap-10">
               <span>v2.4.0</span>
             </div>

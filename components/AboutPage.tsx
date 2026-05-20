@@ -356,7 +356,7 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
             <p className="text-[9px] font-mono text-white/15 uppercase tracking-[0.6em]">
-              ©2024 OBSCURITYSECURITY
+              ©2024 OBSCURITYSECURITY — AGPL-3.0
             </p>
           </div>
         </footer>
