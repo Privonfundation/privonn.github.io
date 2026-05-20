@@ -460,11 +460,11 @@ const App: React.FC = () => {
             </div>
           </div>
           
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] font-mono text-white/20 uppercase tracking-[0.6em]">
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between gap-8 text-[10px] font-mono text-white/40 uppercase tracking-[0.6em]">
             <span>©2026 OBSCURITYSECURITY — AGPL-3.0</span>
-            <div className="flex flex-col items-center md:items-end gap-1">
+            <div className="flex gap-10">
               <span>v2.4.0</span>
-              <span className="text-[8px] text-white/10 tracking-[0.4em]">All projects &amp; this website are AGPL-3.0</span>
+              <span className="text-white/30">All projects &amp; this website are AGPL-3.0</span>
             </div>
           </div>
         </div>

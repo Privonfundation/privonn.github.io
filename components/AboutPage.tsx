@@ -356,10 +356,10 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-col items-center md:items-end gap-1">
-              <p className="text-[9px] font-mono text-white/15 uppercase tracking-[0.6em]">
+              <p className="text-[9px] font-mono text-white/40 uppercase tracking-[0.6em]">
                 ©2026 OBSCURITYSECURITY — AGPL-3.0
               </p>
-              <p className="text-[7px] font-mono text-white/10 uppercase tracking-[0.4em]">
+              <p className="text-[7px] font-mono text-white/25 uppercase tracking-[0.4em]">
                 All projects &amp; this website are AGPL-3.0
               </p>
             </div>
