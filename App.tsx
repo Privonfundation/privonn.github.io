@@ -442,7 +442,7 @@ const App: React.FC = () => {
                 </div>
               </div>
               <p className="text-[11px] font-mono text-white/30 max-w-sm leading-relaxed uppercase tracking-[0.2em]">
-                {t.FOOTER_MISSION} <br/> {lang === 'ro' ? 'Arhitectură digitală pentru libertate absolută.' : 'Digital architecture for absolute freedom.'}
+                {t.FOOTER_MISSION}
               </p>
             </div>
             
