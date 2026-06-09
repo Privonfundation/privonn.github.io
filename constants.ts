@@ -31,9 +31,7 @@ export const TRANSLATIONS = {
     VERSE_2_REF: '2 Corinteni| 3:17',
     APPS_SECTION_TITLE: 'Proiecte',
     APPS: [
-      { id: '01', title: 'CrytoTool', tagline: 'Seif Digital', desc: 'Un manager de fișiere, galerie, player muzical și vizualizator de documente all-in-one, criptat end-to-end, unde confidențialitatea ta vine pe primul loc.', logoImage: '/CrytoTool.png', features: ['4 în 1', 'Multiplatform: Windows, Linux, macOS și Android', '6 Algoritmi de Criptare', '52 de Limbi', '100 de Teme'] },
-      { id: '02', title: 'Ghost', tagline: 'Identitate Zero', desc: 'Sistem de identitate anonimă care îți permite să interacționezi cu serviciile web fără a dezvălui date reale.' },
-      { id: '03', title: 'Nexus', tagline: 'Comunicații P2P', desc: 'Protocol de mesagerie peer-to-peer fără servere centrale. Intimitate absolută în orice conversație.' }
+      { id: '01', title: 'CrytoTool', tagline: 'Seif Digital', desc: 'All-in-One Privacy, manager de fișiere cu criptare client-side, galerie, player muzical și vizualizator de documente unde confidențialitatea ta vine pe primul loc.', logoImage: '/CrytoTool.png', features: ['4 în 1', 'Multiplatform: Windows, Linux, macOS și Android', '6 Algoritmi de Criptare', '52 de Limbi', '100 de Teme'] },
     ],
     NAV: {
       HOME: 'Acasă',
@@ -88,9 +86,7 @@ export const TRANSLATIONS = {
     VERSE_2_REF: '2 Corinthians| 3:17',
     APPS_SECTION_TITLE: 'Projects',
     APPS: [
-      { id: '01', title: 'CrytoTool', tagline: 'Digital Vault', desc: 'A four-in-one, end-to-end encrypted file manager, gallery, music player, and document viewer where your privacy comes first.', logoImage: '/CrytoTool.png', features: ['4 in 1', 'Multiplatform: Windows, Linux, macOS & Android', '6 Encryption Algorithms', '52 Languages', '100 Themes'] },
-      { id: '02', title: 'Ghost', tagline: 'Zero Identity', desc: 'Anonymous identity system that lets you interact with web services without revealing real data.' },
-      { id: '03', title: 'Nexus', tagline: 'P2P Comms', desc: 'Peer-to-peer messaging protocol without central servers. Absolute privacy in every conversation.' }
+      { id: '01', title: 'CrytoTool', tagline: 'Digital Vault', desc: 'All-in-One Privacy, client-side encryption file manager, gallery, music player, and document viewer where your privacy comes first.', logoImage: '/CrytoTool.png', features: ['4 in 1', 'Multiplatform: Windows, Linux, macOS & Android', '6 Encryption Algorithms', '52 Languages', '100 Themes'] },
     ],
     NAV: {
       HOME: 'Home',
@@ -143,9 +139,7 @@ export const TRANSLATIONS = {
     VERSE_2_REF: '2 Corintios| 3:17',
     APPS_SECTION_TITLE: 'Proyectos',
     APPS: [
-      { id: '01', title: 'CrytoTool', tagline: 'Bóveda Digital', desc: 'Un administrador de archivos, galería, reproductor de música y visor de documentos todo en uno, cifrado de extremo a extremo, donde tu privacidad es lo primero.', logoImage: '/CrytoTool.png', features: ['4 en 1', 'Multiplataforma: Windows, Linux, macOS y Android', '6 Algoritmos de Cifrado', '52 Idiomas', '100 Temas'] },
-      { id: '02', title: 'Ghost', tagline: 'Identidad Cero', desc: 'Sistema de identidad anónima que te permite interactuar con servicios web sin revelar datos reales.' },
-      { id: '03', title: 'Nexus', tagline: 'Comunicaciones P2P', desc: 'Protocolo de mensajería peer-to-peer sin servidores centrales. Privacidad absoluta en cada conversación.' }
+      { id: '01', title: 'CrytoTool', tagline: 'Bóveda Digital', desc: 'All-in-One Privacy, administrador de archivos con cifrado client-side, galería, reproductor de música y visor de documentos donde tu privacidad es lo primero.', logoImage: '/CrytoTool.png', features: ['4 en 1', 'Multiplataforma: Windows, Linux, macOS y Android', '6 Algoritmos de Cifrado', '52 Idiomas', '100 Temas'] },
     ],
     NAV: {
       HOME: 'Inicio',

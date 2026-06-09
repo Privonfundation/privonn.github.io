@@ -145,7 +145,7 @@ export const OrbitalSystem: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) 
         <div className="absolute top-1/2 left-12 -translate-y-1/2 max-w-sm">
           <div className="border-l-2 border-[#ffffff] pl-6 py-4">
             <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] block mb-2">System_Output</span>
-            <h3 className="text-5xl font-black uppercase tracking-tighter text-white mb-4">{activeApp?.title}</h3>
+            <h3 className="text-5xl font-black tracking-tighter text-white mb-4">{activeApp?.title}</h3>
             <p className="text-white/60 font-mono text-sm leading-relaxed">{activeApp?.desc}</p>
           </div>
         </div>

@@ -7,6 +7,8 @@ import Silk from './components/Silk';
 import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
+import { useLanguage } from './components/LanguageContext';
+import Seo from './components/Seo';
 
 const renderHighlighted = (text: string, className = '') => {
   const parts = text.split('|');
@@ -44,7 +46,7 @@ const ArticleCard = memo(({ art }: { art: any }) => (
 
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
-  const [lang, setLang] = useState<'ro' | 'en' | 'es'>('en');
+  const { lang, setLang } = useLanguage();
   const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
 
   const heroRef = useRef<HTMLDivElement>(null);
@@ -126,7 +128,13 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden isolate">
+    <>
+      <Seo
+        title="ObscuritySecurity"
+        description="Open-source, privacy-first cybersecurity solutions. Zero data collection, zero tracking, zero knowledge. Protocol 3305 compliant."
+        path="/"
+      />
+      <div className="min-h-screen bg-black text-white selection:bg-[#ffffff] selection:text-black overflow-x-hidden isolate">
       <div 
         ref={parallaxBgRef}
         className="fixed inset-0 -z-20 bg-blueprint opacity-20 pointer-events-none will-change-transform"
@@ -182,18 +190,33 @@ const App: React.FC = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 reveal-text mb-20 pointer-events-auto" style={{ transitionDelay: '0.9s' }}>
-            <Link to="/about" className="w-full sm:w-auto px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all hover:scale-105 hover:bg-white active:scale-95 text-center flex items-center justify-center gap-2">
-              <i className="fa-solid fa-user-shield text-sm"></i>
+            <Link to="/about" className="w-full sm:w-auto px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full shadow-[0_0_50px_rgba(255,255,255,0.4)] transition-all hover:scale-105 hover:bg-white active:scale-95 text-center flex items-center justify-center">
               {lang === 'ro' ? 'Despre Noi' : lang === 'es' ? 'Sobre Nosotros' : 'About Us'}
             </Link>
-            <a href="#the_vault" className="w-full sm:w-auto px-10 py-5 border border-white/30 text-white font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/10 transition-all backdrop-blur-sm text-center flex items-center justify-center gap-2">
-              <i className="fa-solid fa-layer-group text-sm"></i>
-              {lang === 'ro' ? 'Aplicații' : lang === 'es' ? 'Aplicaciones' : 'Apps'}
+            <a href="#the_vault" className="w-full sm:w-auto px-10 py-5 border border-white/30 text-white font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/10 transition-all backdrop-blur-sm text-center flex items-center justify-center">
+              {lang === 'ro' ? 'Proiecte' : lang === 'es' ? 'Proyectos' : 'Projects'}
             </a>
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto px-10 py-5 border border-white/15 text-white/50 font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/5 hover:border-white/30 hover:text-white transition-all backdrop-blur-sm text-center flex items-center justify-center gap-2">
-              <i className="fa-brands fa-github text-sm"></i>
-              {lang === 'ro' ? 'Cod Sursă' : lang === 'es' ? 'Código Fuente' : 'Source Code'}
-            </a>
+            <Link to="/contributions" className="w-full sm:w-auto px-10 py-5 border border-white/15 text-white/50 font-black uppercase text-[11px] tracking-widest rounded-full hover:bg-white/5 hover:border-white/30 hover:text-white transition-all backdrop-blur-sm text-center flex items-center justify-center">
+              {lang === 'ro' ? 'Contribuții' : lang === 'es' ? 'Contribuciones' : 'Contributions'}
+            </Link>
+          </div>
+
+          <div className="reveal-text pointer-events-auto max-w-xl mx-auto mt-12" style={{ transitionDelay: '1.1s' }}>
+            <div className="flex items-center justify-center gap-6 mb-6">
+              <a href="https://github.com/ObscuritySecurity" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/30 text-white/60 hover:text-white transition-all text-[9px] font-mono font-bold uppercase tracking-[0.3em]">
+                <i className="fa-brands fa-github text-sm"></i> GitHub
+              </a>
+              <a href="https://github.com/ObscuritySecurity/CrytoTool/discussions" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 hover:border-white/30 text-white/60 hover:text-white transition-all text-[9px] font-mono font-bold uppercase tracking-[0.3em]">
+                <i className="fa-solid fa-comments text-sm"></i> {lang === 'ro' ? 'Discuții' : lang === 'es' ? 'Discusiones' : 'Discussions'}
+              </a>
+            </div>
+            <p className="text-[10px] md:text-xs font-mono text-white/30 text-center leading-relaxed max-w-lg mx-auto">
+              {lang === 'ro'
+                ? 'Tot codul este deschis. Contribuie, auditează, fork-uie. Transparența este fundația noastră.'
+                : lang === 'es'
+                ? 'Todo el código es abierto. Contribuye, audita, haz fork. La transparencia es nuestra base.'
+                : 'All code is open. Contribute, audit, fork. Transparency is our foundation.'}
+            </p>
           </div>
         </div>
       </section>
@@ -447,21 +470,31 @@ const App: React.FC = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-2 gap-16 md:gap-32 text-[10px] font-bold uppercase tracking-[0.4em] text-white/30">
-              <div className="flex flex-col gap-8">
-                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.6em]">Network</span>
-                <a href="#" className="hover:text-white transition-colors">Infrastructure</a>
-                <a href="#" className="hover:text-white transition-colors">Github</a>
+            <div className="grid grid-cols-3 gap-4 md:gap-16 text-[7px] md:text-[10px] font-bold uppercase tracking-[0.2em] md:tracking-[0.4em] text-white/30">
+              <div className="flex flex-col gap-4 md:gap-8">
+                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.3em] md:tracking-[0.6em]">Community</span>
+                <a href="https://github.com/ObscuritySecurity" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+                <a href="https://matrix.to/#/#obscuritysecurity:matrix.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Matrix</a>
+                <a href="https://mastodon.social/@ObscuritySecurity" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Mastodon</a>
+                <a href="https://pixelfed.social/i/web/profile/ObscuritySecurity" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Pixelfed</a>
+                <a href="https://lemmy.world/c/obscuritysecurity" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Lemmy</a>
               </div>
-              <div className="flex flex-col gap-8">
-                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.6em]">Legal</span>
-                <a href="#" className="hover:text-white transition-colors">Ethics_Code</a>
-                <a href="#" className="hover:text-white transition-colors">Audit_2024</a>
+              <div className="flex flex-col gap-4 md:gap-8">
+                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.3em] md:tracking-[0.6em]">Pages</span>
+                <Link to="/community" className="hover:text-white transition-colors">Community</Link>
+                <Link to="/contributions" className="hover:text-white transition-colors">Contributions</Link>
+                <Link to="/about" className="hover:text-white transition-colors">About</Link>
+              </div>
+              <div className="flex flex-col gap-4 md:gap-8">
+                <span className="text-[#ffffff] opacity-40 font-mono tracking-[0.3em] md:tracking-[0.6em]">Legal</span>
+                <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
+                <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
+                <Link to="/ethics" className="hover:text-white transition-colors">Ethics</Link>
               </div>
             </div>
           </div>
           
-          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between gap-8 text-[10px] font-mono text-white/40 uppercase tracking-[0.6em]">
+          <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between gap-4 md:gap-8 text-[7px] md:text-[10px] font-mono text-white/40 uppercase tracking-[0.3em] md:tracking-[0.6em]">
             <span>©2026 OBSCURITYSECURITY — AGPL-3.0</span>
             <div className="flex gap-10">
               <span>v2.4.0</span>
@@ -471,6 +504,7 @@ const App: React.FC = () => {
         </div>
       </footer>
     </div>
+  </>
   );
 };
 

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://obscuritysecurity.github.io/sitemap.xml

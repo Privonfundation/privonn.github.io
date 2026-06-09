@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import { TRANSLATIONS } from '../constants';
 
 interface AppNode {
@@ -116,7 +117,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                     </div>
                   )}
                   <div className={app.logoImage ? 'mb-6' : 'mb-8'}>
-                    <h3 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-[#ffffff]">
+                    <h3 className="text-4xl md:text-7xl font-black tracking-tighter text-[#ffffff]">
                       {app.title}
                     </h3>
                   </div>
@@ -136,9 +137,9 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
                   )}
 
                   <div className="mt-auto flex flex-wrap items-center gap-8">
-                    <button className="px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.2)]">
-                      {lang === 'ro' ? 'Deschide Modulul' : lang === 'es' ? 'Abrir Módulo' : 'Initialize Module'}
-                    </button>
+                    <Link to="/crytotool" className="px-10 py-5 bg-[#ffffff] text-black font-black uppercase text-[11px] tracking-widest rounded-full hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_10px_30px_rgba(255,255,255,0.2)] inline-block">
+                      {lang === 'ro' ? 'Mai multe detalii' : lang === 'es' ? 'Más detalles' : 'More details'}
+                    </Link>
                   </div>
                 </div>
 
@@ -151,7 +152,7 @@ export const CyberVault: React.FC<{ lang: 'ro' | 'en' | 'es' }> = ({ lang }) => 
 
               {/* Parallax Background Label */}
               <div 
-                className={`absolute -z-10 -bottom-10 -left-10 text-[15vw] font-black text-white/[0.03] uppercase select-none pointer-events-none transition-transform duration-1000 ${isActive ? 'translate-x-0' : 'translate-x-20'}`}
+                className={`absolute -z-10 -bottom-10 -left-10 text-[15vw] font-black text-white/[0.03] select-none pointer-events-none transition-transform duration-1000 ${isActive ? 'translate-x-0' : 'translate-x-20'}`}
               >
                 {app.title}
               </div>
