@@ -185,21 +185,6 @@
         to { opacity: 1; transform: translateY(0); }
       }
 
-      @keyframes verse-float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-8px); }
-      }
-      @keyframes verse-float-reverse {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(8px); }
-      }
-      .animate-verse-float {
-        animation: verse-float 5s ease-in-out infinite;
-      }
-      .animate-verse-float-reverse {
-        animation: verse-float-reverse 5s ease-in-out infinite;
-      }
-
       @keyframes glitch-protocol {
         0%, 85%, 100% { transform: translate(0); clip-path: inset(0); }
         87% { transform: translate(-4px, 1px) skewX(-2deg); clip-path: inset(10% 0 60% 0); }

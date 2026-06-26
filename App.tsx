@@ -2,24 +2,13 @@
 import React, { useEffect, useState, memo, useRef, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
-import { Typewriter } from './components/Typewriter';
+
 const Silk = lazy(() => import('./components/Silk'));
 import { Logo } from './components/Logo';
 import { CyberVault } from './components/CyberVault';
 import { TRANSLATIONS, PROTOCOL_ARTICLES } from './constants';
 import { useLanguage } from './components/LanguageContext';
 import Seo from './components/Seo';
-
-const renderHighlighted = (text: string, className = '') => {
-  const parts = text.split('|');
-  if (parts.length === 1) return <span className={className}>{text}</span>;
-  return (
-    <span className={className}>
-      <span className="text-[#ffffff]">{parts[0]}</span>
-      <span>{parts[1]}</span>
-    </span>
-  );
-};
 
 const ArticleCard = memo(({ art }: { art: any }) => (
   <div className="flex-shrink-0 relative bg-[#080808] border border-white/8 rounded-xl p-4 md:p-5 overflow-hidden min-w-[240px] md:min-w-[320px] max-w-[240px] md:max-w-[320px]">
@@ -47,8 +36,6 @@ const ArticleCard = memo(({ art }: { art: any }) => (
 const App: React.FC = () => {
   const [active, setActive] = useState(false);
   const { lang, setLang } = useLanguage();
-  const [verseStage, setVerseStage] = useState<'verses' | 'third'>('verses');
-
   const heroRef = useRef<HTMLDivElement>(null);
   const parallaxBgRef = useRef<HTMLDivElement>(null);
 
@@ -217,105 +204,6 @@ const App: React.FC = () => {
                 ? 'Todo el código es abierto. Contribuye, audita, haz fork. La transparencia es nuestra base.'
                 : 'All code is open. Contribute, audit, fork. Transparency is our foundation.'}
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section id="verse" className="relative min-h-screen flex items-center justify-center overflow-hidden border-t border-white/5">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-blueprint opacity-5"></div>
-          <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-b from-black to-transparent z-10"></div>
-          <div className="absolute bottom-0 left-0 w-full h-32 z-10" style={{ background: 'linear-gradient(to top, #1a1a1e, transparent)' }}></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-[#ffffff] blur-[120px] opacity-20"></div>
-        </div>
-
-        <div className="relative z-20 max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-center gap-4 mb-6 md:mb-16">
-            <div className="h-[1px] w-16 bg-[#ffffff]"></div>
-            <span className="text-[#ffffff] font-mono text-[10px] uppercase tracking-[0.5em] font-bold">{t.VERSE_LABEL}</span>
-            <div className="h-[1px] w-16 bg-[#ffffff]"></div>
-          </div>
-
-          <div className="relative flex items-center justify-center" style={{ minHeight: '400px' }}>
-            <div className={`group/verses flex flex-col md:flex-row md:items-start md:justify-center w-full transition-all duration-800 ease-in-out ${
-              verseStage === 'third' ? 'opacity-0 md:translate-x-[-120%] scale-95 pointer-events-none' : 'opacity-100 translate-x-0 scale-100'
-            }`}>
-              <div className="relative z-20 md:w-1/2 md:flex-shrink-0 transition-transform duration-700 ease-out md:group-hover/verses:-translate-x-[18%] -rotate-1 md:rotate-0">
-                <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:-translate-x-[200%] opacity-0' : ''}`}>
-                  <div className="animate-verse-float md:animate-verse-float">
-                     <div className="bg-black/40 backdrop-blur-lg border border-white/40 rounded-2xl p-6 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.08),0_0_30px_rgba(255,255,255,0.06),inset_0_0_40px_rgba(255,255,255,0.03)] md:mr-[-20%]">
-                  <blockquote>
-                    <p className="text-xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white break-words">
-                      „{renderHighlighted(t.VERSE_1)}"
-                    </p>
-                    <cite className="block mt-6 md:mt-8 text-white/70 font-mono text-[10px] md:text-sm tracking-[0.4em] uppercase not-italic">
-                      — {renderHighlighted(t.VERSE_1_REF)}
-                    </cite>
-                  </blockquote>
-                  </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative z-10 md:w-1/2 md:flex-shrink-0 md:mt-16 transition-transform duration-700 ease-out md:group-hover/verses:translate-x-[18%] -mt-2 md:mt-16 self-end translate-x-2 md:translate-x-0 rotate-1 md:rotate-0">
-                <div className={`transition-all duration-700 ${verseStage === 'third' ? 'md:translate-x-[200%] opacity-0' : ''}`}>
-                  <div className="animate-verse-float-reverse md:animate-verse-float-reverse">
-                     <div className="bg-white/5 backdrop-blur-md border border-white/20 rounded-2xl p-6 md:p-12 shadow-[0_0_40px_rgba(255,255,255,0.05),0_0_20px_rgba(255,255,255,0.03),inset_0_0_30px_rgba(255,255,255,0.02)] md:ml-[-20%]">
-                  <blockquote>
-                    <p className="text-xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-[1.1] text-white/90 break-words">
-                      „{renderHighlighted(t.VERSE_2)}"
-                    </p>
-                    <cite className="block mt-6 md:mt-8 text-white/50 font-mono text-[10px] md:text-sm tracking-[0.4em] uppercase not-italic">
-                      — {renderHighlighted(t.VERSE_2_REF)}
-                    </cite>
-                  </blockquote>
-                  </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-800 ease-in-out ${
-              verseStage === 'third' ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95 pointer-events-none'
-            }`}>
-              <div className="w-full max-w-3xl mx-auto px-6">
-                <div className="bg-black/40 backdrop-blur-lg border border-[#ffffff]/40 rounded-2xl p-8 md:p-12 shadow-[0_0_60px_rgba(255,255,255,0.15),0_0_30px_rgba(255,255,255,0.1),inset_0_0_40px_rgba(255,255,255,0.04)]">
-                  <blockquote>
-                    <p className="text-lg md:text-2xl lg:text-3xl font-black uppercase tracking-tight leading-[1.3] text-white/90">
-                      <Typewriter
-                        text={t.FOUNDATION_MESSAGE}
-                        highlightWords={
-                          lang === 'ro'
-                            ? ['Iisus Hristos', 'libertate', 'mântuire', 'fundamentul', 'fără libertate']
-                            : lang === 'es'
-                            ? ['Jesucristo', 'libertad', 'salvación', 'fundamento', 'sin libertad']
-                            : ['Jesus Christ', 'freedom', 'salvation', 'foundation', 'without freedom']
-                        }
-                        speed={20}
-                      />
-                    </p>
-                  </blockquote>
-                  <div className="mt-8 flex justify-center gap-4">
-                    <button onClick={() => setVerseStage('verses')} className="px-6 py-3 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white/70 hover:text-white text-[10px] font-mono font-bold uppercase tracking-[0.3em] transition-all active:scale-95">
-                      ← {lang === 'ro' ? 'Înapoi la versete' : lang === 'es' ? 'Volver a versos' : 'Back to verses'}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex justify-center mt-10">
-            <button 
-              onClick={() => setVerseStage(verseStage === 'verses' ? 'third' : 'verses')}
-              className="group flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 text-white/50 hover:text-white text-[9px] font-mono font-bold uppercase tracking-[0.4em] transition-all active:scale-95"
-            >
-              <span>{verseStage === 'verses' ? '→' : '←'}</span>
-              <span>{verseStage === 'verses'
-                ? (lang === 'ro' ? 'Continuă' : lang === 'es' ? 'Continuar' : 'Continue')
-                : (lang === 'ro' ? 'Înapoi la versete' : lang === 'es' ? 'Volver a versos' : 'Back to verses')
-              }</span>
-            </button>
           </div>
         </div>
       </section>
